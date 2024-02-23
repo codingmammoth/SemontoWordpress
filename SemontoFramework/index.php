@@ -13,39 +13,23 @@ if (!validateSecretKey($config)) {
     exit();
 }
 
-[ $cache_enabled, $cache_file_path, $cache_life_span ] = getCacheConfig($config, __DIR__);
-
-$results = false;
-if ($cache_enabled) {
-    $results = getCachedResults($cache_file_path, $cache_life_span);
+$db = false;
+if ($config['db']['connect']) {
+    if (isset($config['db']['initialise_type']) && $config['db']['initialise_type'] == 'via_function') {
+        $db = $config['db']['function_name']();
+    }
 }
 
-if (!$results) {
-    $db = false;
-    if ($config['db']['connect']) {
-        $db = connectToDB($config['db']);
-        if (isset($config['db']['initialise_type']) && $config['db']['initialise_type'] == 'via_function') {
-            $db = $config['db']['function_name']();
-        } else {
-            $db = connectToDB($config['db']);
-        }
-    }
+$tests = getTests($config, $db);
+$health = new ServerHealth();
+$health->tests($tests);
+$results = $health->run();
 
-    $tests = getTests($config, $db);
-    $health = new ServerHealth();
-    $health->tests($tests);
-    $results = $health->run();
-
-    if ($db) {
-        $db->close();
-    }
-
-    if ($cache_enabled) {
-        cacheResults($cache_file_path, $results);
-    }
+if ($db) {
+    $db->close();
 }
 
 if ($results['status'] !== ServerStates::ok) { http_response_code(500); }
 
 header('Content-Type: application/json; charset=utf-8');
-echo json_encode($results);
+echo wp_json_encode($results);
