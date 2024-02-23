@@ -1,0 +1,300 @@
+.semonto-health-monitor p {
+  margin: 0px;
+  font-size: 15px;
+}
+
+u {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+
+}
+
+.semonto-health-monitor h2 {
+  font-size: 20px;
+}
+
+.semonto-health-monitor a {
+  text-decoration: none;
+}
+
+.semonto-health-monitor .titles {
+  margin-bottom: 17px;
+  margin-top: 17px;
+}
+
+.semonto-health-monitor #create-account {
+  color: white;
+}
+
+.semonto-health-monitor {
+  margin: 0px;
+  padding-right: 10px;
+}
+
+.semonto-health-monitor #semontoimg {
+  height: 50px;
+  margin-left: 10px;
+}
+
+.semonto-health-monitor a {
+  color: black;
+}
+
+.semonto-health-monito #infotext {
+  font-size: 18px;
+  text-wrap: no-wrap;
+  margin: 0px;
+  max-width: 500px;
+  list-style-type: disc;
+}
+
+.semonto-health-monitor .input-button {
+  cursor: pointer;
+  width: auto;
+  background-color: #007FFF;
+  height: 40px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.semonto-health-monitor .overall {
+  width: 200px;
+}
+
+.semonto-health-monitor input {
+  margin: 0px;
+}
+
+.error-messages {
+  color: red;
+}
+
+.semonto-health-monitor .options {
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  height: 40px;
+  display: flex;
+}
+
+.semonto-health-monitor button {
+  font-size: 15px;
+}
+
+.semonto-health-monitor .input-fields {
+  margin-bottom: 12px;
+}
+
+.semonto-health-monitor .input-fields-text {
+  display: flex;
+  height: 40px;
+}
+
+.semonto-health-monitor .semontosetting {
+  margin-top: 20px;
+  display: flex;
+}
+
+.semonto-health-monitor .title-test {
+  display: block;
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 14px;
+  width: 40%;
+}
+
+.semonto-health-monitor .semonto_serverload {
+  margin-left: 10px;
+  border: 1px solid grey;
+  width: 20%;
+}
+
+.semonto-health-monitor .warning {
+  font-size: 13px;
+  width: 20%;
+}
+
+.semonto-health-monitor .switch-option {
+  padding: 5px;
+}
+
+.semonto-health-monitor .switch {
+  position: relative;
+  display: inline-block;
+  margin: 0px;
+  width: 55px;
+  height: 30px;
+}
+
+.semonto-health-monitor .switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.semonto-health-monitor .slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.semonto-health-monitor .slider:before {
+  position: absolute;
+  content: "";
+  height: 23px;
+  width: 23px;
+  left: 4px;
+  bottom: 3.5px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.semonto-health-monitor input:checked+.slider {
+  background-color: #2196F3;
+}
+
+.semonto-health-monitor input:focus+.slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+.semonto-health-monitor input:checked+.slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.semonto-health-monitor .slider.round {
+  border-radius: 34px;
+}
+
+.semonto-health-monitor .slider.round:before {
+  border-radius: 50%;
+}
+
+.semonto-health-monitor .instal-succes-message {
+  color: #3c434a;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  margin-top: 15px;
+  padding: 15px;
+  color: green;
+  line-height: 1.3em;
+  background-color: rgb(229, 252, 229);
+}
+
+.semonto-health-monitor .close-button {
+  width: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  float: right;
+  /* Add this line to position the close button to the right */
+}
+
+.semonto-health-monitor #secret-key {
+  width: 100%;
+}
+
+.semonto-health-monitor .tests {
+  margin-bottom: 20px;
+}
+
+.semonto-health-monitor .input-tests {
+  border-top: 1px solid rgb(171, 171, 171);
+  margin-bottom: 50px;
+}
+
+@media only screen and (min-width: 600px) {
+  .semonto-health-monitor .input-tests {
+    width: 470px;
+  }
+
+  .semonto-health-monitor #secret-key {
+    width: 470px;
+  }
+
+  .semonto-health-monitor .instal-succes-message {
+    font-size: 17px;
+    width: auto;
+    max-width: 500px;
+  }
+
+  .semonto-health-monitor .semonto_serverload {
+    width: 25%;
+  }
+
+  .semonto-health-monitor .warning-error {
+    text-align: center;
+  }
+
+  .semonto-health-monitor .warning {
+    font-size: 13px;
+    width: auto;
+    margin-bottom: 10px;
+  }
+
+  .semonto-health-monitor .one {
+    margin-right: 4px;
+  }
+}
+
+.semonto-health-monitor .warning-error {
+  font-size: 15px;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.semonto-health-monitor .error-input {
+  border: 1px solid red;
+  color: black;
+}
+
+.semonto-health-monitor #execerror {
+  color: #e20c0c
+}
+
+.semonto-health-monitor .load {
+  margin-right: 6%;
+}
+
+.semonto-health-monitor .test-field {
+  width: 470px;
+  border-top: 1px solid rgb(171, 171, 171);
+}
+
+#semontobutton {
+  background-color: #007FFF;
+  width: 120px;
+  color: white;
+  text-align: center;
+  height: 19px !important;
+  margin-top: auto;
+  margin-bottom: auto;
+  padding: 5px;
+  font-size: 15px;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 8px;
+  text-decoration: none;
+}
+
+.semontolink {
+  display: flex;
+
+}
+
+#semontotext {
+  font-size: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
