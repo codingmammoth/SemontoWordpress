@@ -13,21 +13,10 @@ if (!validateSecretKey($config)) {
     exit();
 }
 
-$db = false;
-if ($config['db']['connect']) {
-    if (isset($config['db']['initialise_type']) && $config['db']['initialise_type'] == 'via_function') {
-        $db = $config['db']['function_name']();
-    }
-}
-
-$tests = getTests($config, $db);
+$tests = getTests($config, false);
 $health = new ServerHealth();
 $health->tests($tests);
 $results = $health->run();
-
-if ($db) {
-    $db->close();
-}
 
 if ($results['status'] !== ServerStates::ok) { http_response_code(500); }
 
