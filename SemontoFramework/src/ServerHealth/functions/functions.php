@@ -30,8 +30,8 @@ function getTests ($config, $db) {
             } else if (file_exists(__DIR__ . $include_path_default_tests . $test_class . '.php')) {
                 $include_path = __DIR__ . $include_path_default_tests . $test_class . '.php';
             } else {
-                header('HTTP/1.1 500 Internal Server Error');
-                continue;
+                throw new Exception('Test '. $test['test'] . ' not found.');
+                break;
             }
 
             require_once $include_path;
