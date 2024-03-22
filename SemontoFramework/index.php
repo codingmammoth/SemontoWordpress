@@ -6,14 +6,14 @@ require_once __DIR__."/src/ServerHealth/functions/functions.php";
 require_once __DIR__."/src/ServerHealth/ServerHealth.php";
 require_once __DIR__."/src/ServerHealth/ServerStates.php";
 
-$config = getConfig();
+$config = semonto_get_config();
 
-if (!validateSecretKey($config)) {
+if (!semonto_validate_secret_key($config)) {
     http_response_code(403);
     exit();
 }
 
-$tests = getTests($config, false);
+$tests = semonto_get_tests($config, false);
 $health = new ServerHealth();
 $health->tests($tests);
 $results = $health->run();
