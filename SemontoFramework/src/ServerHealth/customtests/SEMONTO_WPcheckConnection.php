@@ -1,28 +1,28 @@
 <?php
-require_once __DIR__ . "../../ServerHealthTest.php";
+require_once __DIR__ . "../../SEMONTO_ServerHealthTest.php";
 
-class WPcheckConnection extends ServerHealthTest{
+class SEMONTO_WPcheckConnection extends SEMONTO_ServerHealthTest{
 
     protected function performTests() {
         global $wpdb;
         $starttime = semonto_get_start_time();
 
         $name = "DB Connection check";
-        $status = ServerStates::ok;
+        $status = SEMONTO_ServerStates::ok;
         $description = "";
         
         if (!class_exists('wpdb')) {
-            return new ServerHealthResult(
+            return new SEMONTO_ServerHealthResult(
                 $name,
-                ServerStates::error,
+                SEMONTO_ServerStates::error,
                 "Failed to connect to the database.",
                 number_format(semonto_get_running_time($starttime),6,".","")
             );
         }
         if(!$wpdb->ready){
-              return new ServerHealthResult(
+              return new SEMONTO_ServerHealthResult(
                 $name,
-                ServerStates::error,
+                SEMONTO_ServerStates::error,
                 "The database was not ready",
                 number_format(semonto_get_running_time($starttime),6,".","")
             );
@@ -35,9 +35,9 @@ class WPcheckConnection extends ServerHealthTest{
         $time  = number_format(semonto_get_running_time($starttime),6,".","");
 
         if (is_wp_error($wpdb_test_result)) {
-            $status = ServerStates::error;
+            $status = SEMONTO_ServerStates::error;
         } 
         $value = $time;
-        return new ServerHealthResult($name, $status, $description, $value);
+        return new SEMONTO_ServerHealthResult($name, $status, $description, $value);
     }
 }

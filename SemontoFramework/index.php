@@ -3,8 +3,8 @@
 require_once __DIR__."/config/config.php";
 
 require_once __DIR__."/src/ServerHealth/functions/functions.php";
-require_once __DIR__."/src/ServerHealth/ServerHealth.php";
-require_once __DIR__."/src/ServerHealth/ServerStates.php";
+require_once __DIR__."/src/ServerHealth/SEMONTO_ServerHealth.php";
+require_once __DIR__."/src/ServerHealth/SEMONTO_ServerStates.php";
 
 $config = semonto_get_config();
 
@@ -14,11 +14,11 @@ if (!semonto_validate_secret_key($config)) {
 }
 
 $tests = semonto_get_tests($config, false);
-$health = new ServerHealth();
+$health = new SEMONTO_ServerHealth();
 $health->tests($tests);
 $results = $health->run();
 
-if ($results['status'] !== ServerStates::ok) { http_response_code(500); }
+if ($results['status'] !== SEMONTO_ServerStates::ok) { http_response_code(500); }
 
 header('Content-Type: application/json; charset=utf-8');
 echo wp_json_encode($results);

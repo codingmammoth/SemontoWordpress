@@ -1,27 +1,27 @@
 <?php
-require_once __DIR__ . "../../ServerHealthTest.php";
+require_once __DIR__ . "../../SEMONTO_ServerHealthTest.php";
 
-class WPMaxDatabaseConnections extends ServerHealthTest {
+class SEMONTO_WPMaxDatabaseConnections extends SEMONTO_ServerHealthTest {
     protected function performTests() {
         global $wpdb;
 
         $name = "Max DB Connections Check";
-        $status = ServerStates::ok;
+        $status = SEMONTO_ServerStates::ok;
         $description = "";
 
 
         // Check if $wpdb is available
         if (!class_exists('wpdb')) {
-            return new ServerHealthResult(
+            return new SEMONTO_ServerHealthResult(
                 $name,
-                ServerStates::error,
+                SEMONTO_ServerStates::error,
                 "Failed to connect to the database."
             );
         }
         if(!$wpdb->ready){
-            return new ServerHealthResult(
+            return new SEMONTO_ServerHealthResult(
               $name,
-              ServerStates::error,
+              SEMONTO_ServerStates::error,
               "The database was not ready"
           );
       }
@@ -46,17 +46,17 @@ class WPMaxDatabaseConnections extends ServerHealthTest {
         $error_percentage_threshold = isset($this->config['error_percentage_threshold']) ? $this->config['error_percentage_threshold'] : 90;
 
         if($percentage_connections>=$warning_percentage_threshold){
-            $status =  $status = ServerStates::warning;
+            $status =  $status = SEMONTO_ServerStates::warning;
             $description = "The warning percentage is bigger than the connection percentage";
         }
         if($percentage_connections>=$error_percentage_threshold){
-            $status =  $status = ServerStates::error;
+            $status =  $status = SEMONTO_ServerStates::error;
             $description = "The error percentage is bigger than the connection percentage";
         }
         
         $value = number_format((float)$percentage_connections/100,4,".","");
 
-        return new ServerHealthResult($name, $status, $description, $value);
+        return new SEMONTO_ServerHealthResult($name, $status, $description, $value);
     }
 }
 ?>
