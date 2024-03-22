@@ -1,19 +1,19 @@
 <?php
 
-function getStartTime()
+function semonto_get_start_time()
 {
     $starttime = explode(' ', microtime());  
     return $starttime[1] + $starttime[0];
 }
 
-function getRunningTime($starttime, $round = 5)
+function semonto_get_running_time($starttime, $round = 5)
 {
     $mtime = explode(' ', microtime());  
     $totaltime = $mtime[0] +  $mtime[1] - $starttime;
     return round($totaltime, $round);
 }
 
-function getTests ($config, $db) {
+function semonto_get_tests ($config, $db) {
     try {
         $tests = [];
 
@@ -45,11 +45,12 @@ function getTests ($config, $db) {
     }
 }
 
-function validateSecretKey($config)
+function semonto_validate_secret_key($config)
 {
     if (isset($config['secret_key']) && $config['secret_key'] !== '') {
         if (isset($_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY'])) {
-            return strcmp($config['secret_key'], $_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY']) === 0;
+            $access_key = sanitize_text_field($_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY']);
+            return strcmp($config['secret_key'], $access_key) === 0;
         } else {
             return false;
         }

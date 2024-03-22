@@ -1,6 +1,6 @@
 <?php
 
-class ServerHealth
+class SEMONTO_ServerHealth
 {
     private $tests = [];
 
@@ -26,7 +26,7 @@ class ServerHealth
             return $result['status'];
         }, $test_results);
 
-        $data['status'] = ServerStates::getHighestState($test_states);
+        $data['status'] = SEMONTO_ServerStates::getHighestState($test_states);
 
         return $data;
     }

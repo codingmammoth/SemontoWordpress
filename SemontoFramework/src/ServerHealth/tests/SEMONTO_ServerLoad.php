@@ -1,8 +1,8 @@
 <?php
 
-require_once __DIR__ . "../../ServerHealthTest.php";
+require_once __DIR__ . "../../SEMONTO_ServerHealthTest.php";
 
-class ServerLoad extends ServerHealthTest
+class SEMONTO_ServerLoad extends SEMONTO_ServerHealthTest
 {
 
     protected $name = 'Server Load';
@@ -23,9 +23,9 @@ class ServerLoad extends ServerHealthTest
         $loads = $this->getLoads();
 
         if ($loads === false) {
-            return new ServerHealthResult($this->name, ServerStates::error, "Couldn't get loads of server");
+            return new SEMONTO_ServerHealthResult($this->name, SEMONTO_ServerStates::error, "Couldn't get loads of server");
         } else if (!isset($this->config['type'])) {
-            return new ServerHealthResult($this->name, ServerStates::error, "No config set.");
+            return new SEMONTO_ServerHealthResult($this->name, SEMONTO_ServerStates::error, "No config set.");
         } else {
             $warning_threshold = isset($this->config['warning_threshold']) ? $this->config['warning_threshold'] : 5;
             $error_threshold = isset($this->config['error_threshold']) ? $this->config['error_threshold'] : 15;
@@ -55,17 +55,17 @@ class ServerLoad extends ServerHealthTest
 
             if ($load !== false) {
                 if ($load >= $error_threshold) {
-                    $status = ServerStates::error;
+                    $status = SEMONTO_ServerStates::error;
                 } else if ($load >= $warning_threshold) {
-                    $status = ServerStates::warning;
+                    $status = SEMONTO_ServerStates::warning;
                 } else {
-                    $status = ServerStates::ok;
+                    $status = SEMONTO_ServerStates::ok;
                 }
             } else {
-                $status = ServerStates::warning;
+                $status = SEMONTO_ServerStates::warning;
             }
 
-            return new ServerHealthResult($name, $status, $description, $load);
+            return new SEMONTO_ServerHealthResult($name, $status, $description, $load);
         }
     }
 }
