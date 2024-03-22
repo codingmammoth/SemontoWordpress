@@ -49,7 +49,8 @@ function validateSecretKey($config)
 {
     if (isset($config['secret_key']) && $config['secret_key'] !== '') {
         if (isset($_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY'])) {
-            return strcmp($config['secret_key'], $_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY']) === 0;
+            $access_key = sanitize_text_field($_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY']);
+            return strcmp($config['secret_key'], $access_key) === 0;
         } else {
             return false;
         }
