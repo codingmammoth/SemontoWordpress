@@ -1,8 +1,16 @@
 <?php
 
-require_once __DIR__ . "../../SEMONTO_ServerHealthTest.php";
+namespace Semonto\ServerHealth;
 
-class SEMONTO_ServerLoad extends SEMONTO_ServerHealthTest
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealthResult,
+    ServerHealthTest
+};
+
+require_once __DIR__ . "../../ServerHealthTest.php";
+
+class ServerLoad extends ServerHealthTest
 {
 
     protected $name = 'Server Load';
@@ -23,9 +31,9 @@ class SEMONTO_ServerLoad extends SEMONTO_ServerHealthTest
         $loads = $this->getLoads();
 
         if ($loads === false) {
-            return new SEMONTO_ServerHealthResult($this->name, SEMONTO_ServerStates::error, "Couldn't get loads of server");
+            return new ServerHealthResult($this->name, ServerStates::error, "Couldn't get loads of server");
         } else if (!isset($this->config['type'])) {
-            return new SEMONTO_ServerHealthResult($this->name, SEMONTO_ServerStates::error, "No config set.");
+            return new ServerHealthResult($this->name, ServerStates::error, "No config set.");
         } else {
             $warning_threshold = isset($this->config['warning_threshold']) ? $this->config['warning_threshold'] : 5;
             $error_threshold = isset($this->config['error_threshold']) ? $this->config['error_threshold'] : 15;
@@ -55,17 +63,17 @@ class SEMONTO_ServerLoad extends SEMONTO_ServerHealthTest
 
             if ($load !== false) {
                 if ($load >= $error_threshold) {
-                    $status = SEMONTO_ServerStates::error;
+                    $status = ServerStates::error;
                 } else if ($load >= $warning_threshold) {
-                    $status = SEMONTO_ServerStates::warning;
+                    $status = ServerStates::warning;
                 } else {
-                    $status = SEMONTO_ServerStates::ok;
+                    $status = ServerStates::ok;
                 }
             } else {
-                $status = SEMONTO_ServerStates::warning;
+                $status = ServerStates::warning;
             }
 
-            return new SEMONTO_ServerHealthResult($name, $status, $description, $load);
+            return new ServerHealthResult($name, $status, $description, $load);
         }
     }
 }
