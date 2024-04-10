@@ -62,6 +62,11 @@ This plugin is officially developed by Semonto.
 Find more info, help pages and our contact details 
 on [Semonto](https://semonto.com/)
 
+Links:
+- [Terms Of Service](https://semonto.com/service)
+- [Privacy Policy](https://semonto.com/privacy)
+
+
 ### Development and issues
 
 Feel free to file issues, or suggest code changes in our  [Github Repo](https://github.com/codingmammoth/SemontoWordpress)
