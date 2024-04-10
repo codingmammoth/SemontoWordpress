@@ -3,8 +3,8 @@
 namespace Semonto\ServerHealth;
 
 use function Semonto\ServerHealth\{
-    semonto_get_start_time,
-    semonto_get_running_time
+    getStartTime,
+    getRunningTime
 };
 
 use Semonto\ServerHealth\{
@@ -19,7 +19,7 @@ class WPcheckConnection extends ServerHealthTest{
 
     protected function performTests() {
         global $wpdb;
-        $starttime = semonto_get_start_time();
+        $starttime = getStartTime();
 
         $name = "DB Connection check";
         $status = ServerStates::ok;
@@ -30,7 +30,7 @@ class WPcheckConnection extends ServerHealthTest{
                 $name,
                 ServerStates::error,
                 "Failed to connect to the database.",
-                number_format(semonto_get_running_time($starttime),6,".","")
+                number_format(getRunningTime($starttime),6,".","")
             );
         }
         if(!$wpdb->ready){
@@ -38,7 +38,7 @@ class WPcheckConnection extends ServerHealthTest{
                 $name,
                 ServerStates::error,
                 "The database was not ready",
-                number_format(semonto_get_running_time($starttime),6,".","")
+                number_format(getRunningTime($starttime),6,".","")
             );
         }
 
@@ -46,7 +46,7 @@ class WPcheckConnection extends ServerHealthTest{
         
         $wpdb_test_result = $wpdb->query('SELECT 1');
         
-        $time  = number_format(semonto_get_running_time($starttime),6,".","");
+        $time  = number_format(getRunningTime($starttime),6,".","");
 
         if (is_wp_error($wpdb_test_result)) {
             $status = ServerStates::error;

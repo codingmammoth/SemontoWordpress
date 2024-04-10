@@ -2,13 +2,13 @@
 
 namespace Semonto\ServerHealth;
 
-function semonto_get_start_time()
+function getStartTime()
 {
     $starttime = explode(' ', microtime());  
     return $starttime[1] + $starttime[0];
 }
 
-function semonto_get_running_time($starttime, $round = 5)
+function getRunningTime($starttime, $round = 5)
 {
     $mtime = explode(' ', microtime());  
     $totaltime = $mtime[0] +  $mtime[1] - $starttime;
