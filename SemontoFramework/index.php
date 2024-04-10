@@ -2,7 +2,8 @@
 
 use function Semonto\ServerHealth\{
     validateSecretKey,
-    getTests
+    getTests,
+    getConfig
 };
 
 use Semonto\ServerHealth\{
@@ -16,7 +17,7 @@ require_once __DIR__."/src/ServerHealth/functions/functions.php";
 require_once __DIR__."/src/ServerHealth/ServerHealth.php";
 require_once __DIR__."/src/ServerHealth/ServerStates.php";
 
-$config = semonto_get_config();
+$config = getConfig();
 
 if (!validateSecretKey($config)) {
     http_response_code(403);
