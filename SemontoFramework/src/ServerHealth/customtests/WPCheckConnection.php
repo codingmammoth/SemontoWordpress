@@ -15,7 +15,7 @@ use Semonto\ServerHealth\{
 
 require_once __DIR__ . "../../ServerHealthTest.php";
 
-class WPcheckConnection extends ServerHealthTest{
+class WPCheckConnection extends ServerHealthTest{
 
     protected function performTests() {
         global $wpdb;

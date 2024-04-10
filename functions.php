@@ -80,7 +80,7 @@ function semonto_generate_tests_config() {
     }
     if (get_option('semonto_enable_wpdb_test')) {
         $config[] = [
-            'test' => 'WPcheckConnection',
+            'test' => 'WPCheckConnection',
             'config' => [], 
         ];
         $config[] = [
