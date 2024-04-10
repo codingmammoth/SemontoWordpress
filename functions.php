@@ -61,30 +61,30 @@ function semonto_generate_tests_config() {
     $config = [];
     if (get_option('semonto_enable_now_test')) {
         $config[] = [
-            'test' => 'SEMONTO_ServerLoad',
+            'test' => 'ServerLoad',
             'config' => [ 'type' => 'current', 'warning_threshold' => get_option('semonto_warning_threshold_now'), 'error_threshold' =>  get_option('semonto_error_threshold_now')]
         ];
         
     }
     if (get_option('semonto_enable_5m_test')) {
         $config[] = [
-            'test' => 'SEMONTO_ServerLoad',
+            'test' => 'ServerLoad',
             'config' => [ 'type' => 'average_5_min', 'warning_threshold' => get_option('semonto_warning_threshold_5m'), 'error_threshold' => get_option('semonto_error_threshold_5m') ]
         ];
     }
     if (get_option('semonto_enable_15m_test')) {
         $config[] = [
-            'test' => 'SEMONTO_ServerLoad',
+            'test' => 'ServerLoad',
             'config' => [ 'type' => 'average_15_min', 'warning_threshold' => get_option('semonto_warning_threshold_15m'), 'error_threshold' => get_option('semonto_error_threshold_15m') ]
         ];
     }
     if (get_option('semonto_enable_wpdb_test')) {
         $config[] = [
-            'test' => 'SEMONTO_WPcheckConnection',
+            'test' => 'WPcheckConnection',
             'config' => [], 
         ];
         $config[] = [
-            'test'=>'SEMONTO_WPMaxDatabaseConnections',
+            'test'=>'WPMaxDatabaseConnections',
             'config' => [ 'warning_percentage_threshold' => get_option('semonto_warning_threshold_wpdb'), 'error_percentage_threshold' =>get_option('semonto_error_threshold_wpdb') ]
         ];
     }

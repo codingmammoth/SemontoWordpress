@@ -1,28 +1,42 @@
 <?php
-require_once __DIR__ . "../../SEMONTO_ServerHealthTest.php";
 
-class SEMONTO_WPcheckConnection extends SEMONTO_ServerHealthTest{
+namespace Semonto\ServerHealth;
+
+use function Semonto\ServerHealth\{
+    semonto_get_start_time,
+    semonto_get_running_time
+};
+
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealthResult,
+    ServerHealthTest
+};
+
+require_once __DIR__ . "../../ServerHealthTest.php";
+
+class WPcheckConnection extends ServerHealthTest{
 
     protected function performTests() {
         global $wpdb;
         $starttime = semonto_get_start_time();
 
         $name = "DB Connection check";
-        $status = SEMONTO_ServerStates::ok;
+        $status = ServerStates::ok;
         $description = "";
         
         if (!class_exists('wpdb')) {
-            return new SEMONTO_ServerHealthResult(
+            return new ServerHealthResult(
                 $name,
-                SEMONTO_ServerStates::error,
+                ServerStates::error,
                 "Failed to connect to the database.",
                 number_format(semonto_get_running_time($starttime),6,".","")
             );
         }
         if(!$wpdb->ready){
-              return new SEMONTO_ServerHealthResult(
+              return new ServerHealthResult(
                 $name,
-                SEMONTO_ServerStates::error,
+                ServerStates::error,
                 "The database was not ready",
                 number_format(semonto_get_running_time($starttime),6,".","")
             );
@@ -35,9 +49,9 @@ class SEMONTO_WPcheckConnection extends SEMONTO_ServerHealthTest{
         $time  = number_format(semonto_get_running_time($starttime),6,".","");
 
         if (is_wp_error($wpdb_test_result)) {
-            $status = SEMONTO_ServerStates::error;
+            $status = ServerStates::error;
         } 
         $value = $time;
-        return new SEMONTO_ServerHealthResult($name, $status, $description, $value);
+        return new ServerHealthResult($name, $status, $description, $value);
     }
 }

@@ -1,27 +1,36 @@
 <?php
-require_once __DIR__ . "../../SEMONTO_ServerHealthTest.php";
 
-class SEMONTO_WPMaxDatabaseConnections extends SEMONTO_ServerHealthTest {
+namespace Semonto\ServerHealth;
+
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealthResult,
+    ServerHealthTest
+};
+
+require_once __DIR__ . "../../ServerHealthTest.php";
+
+class WPMaxDatabaseConnections extends ServerHealthTest {
     protected function performTests() {
         global $wpdb;
 
         $name = "Max DB Connections Check";
-        $status = SEMONTO_ServerStates::ok;
+        $status = ServerStates::ok;
         $description = "";
 
 
         // Check if $wpdb is available
         if (!class_exists('wpdb')) {
-            return new SEMONTO_ServerHealthResult(
+            return new ServerHealthResult(
                 $name,
-                SEMONTO_ServerStates::error,
+                ServerStates::error,
                 "Failed to connect to the database."
             );
         }
         if(!$wpdb->ready){
-            return new SEMONTO_ServerHealthResult(
+            return new ServerHealthResult(
               $name,
-              SEMONTO_ServerStates::error,
+              ServerStates::error,
               "The database was not ready"
           );
       }
@@ -46,17 +55,17 @@ class SEMONTO_WPMaxDatabaseConnections extends SEMONTO_ServerHealthTest {
         $error_percentage_threshold = isset($this->config['error_percentage_threshold']) ? $this->config['error_percentage_threshold'] : 90;
 
         if($percentage_connections>=$warning_percentage_threshold){
-            $status =  $status = SEMONTO_ServerStates::warning;
+            $status =  $status = ServerStates::warning;
             $description = "The warning percentage is bigger than the connection percentage";
         }
         if($percentage_connections>=$error_percentage_threshold){
-            $status =  $status = SEMONTO_ServerStates::error;
+            $status =  $status = ServerStates::error;
             $description = "The error percentage is bigger than the connection percentage";
         }
         
         $value = number_format((float)$percentage_connections/100,4,".","");
 
-        return new SEMONTO_ServerHealthResult($name, $status, $description, $value);
+        return new ServerHealthResult($name, $status, $description, $value);
     }
 }
 ?>

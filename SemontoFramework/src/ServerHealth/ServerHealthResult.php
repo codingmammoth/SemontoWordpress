@@ -1,6 +1,8 @@
 <?php
 
-class SEMONTO_ServerHealthResult
+namespace Semonto\ServerHealth;
+
+class ServerHealthResult
 {
     private $name = '';
     private $status = '';

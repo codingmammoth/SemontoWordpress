@@ -1,9 +1,16 @@
 <?php
 
-require_once __DIR__."/SEMONTO_ServerHealthResult.php";
-require_once __DIR__."/SEMONTO_ServerStates.php";
+namespace Semonto\ServerHealth;
 
-class SEMONTO_ServerHealthTest
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealthResult
+};
+
+require_once __DIR__."/ServerHealthResult.php";
+require_once __DIR__."/ServerStates.php";
+
+class ServerHealthTest
 {
     protected $config = [];
     protected $db = false;
@@ -17,9 +24,9 @@ class SEMONTO_ServerHealthTest
             return $this->performTests();
         } catch (\Throwable $th) {
             $error = $th->getMessage();
-            return new SEMONTO_ServerHealthResult(
+            return new ServerHealthResult(
                 $this->name,
-                SEMONTO_ServerStates::error,
+                ServerStates::error,
                 "Test failed. Error message: $error"
             );
         }

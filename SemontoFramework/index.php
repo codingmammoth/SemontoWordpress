@@ -1,10 +1,20 @@
 <?php
 
+use function Semonto\ServerHealth\{
+    semonto_validate_secret_key,
+    semonto_get_tests
+};
+
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealth
+};
+
 require_once __DIR__."/config/config.php";
 
 require_once __DIR__."/src/ServerHealth/functions/functions.php";
-require_once __DIR__."/src/ServerHealth/SEMONTO_ServerHealth.php";
-require_once __DIR__."/src/ServerHealth/SEMONTO_ServerStates.php";
+require_once __DIR__."/src/ServerHealth/ServerHealth.php";
+require_once __DIR__."/src/ServerHealth/ServerStates.php";
 
 $config = semonto_get_config();
 
@@ -14,11 +24,11 @@ if (!semonto_validate_secret_key($config)) {
 }
 
 $tests = semonto_get_tests($config, false);
-$health = new SEMONTO_ServerHealth();
+$health = new ServerHealth();
 $health->tests($tests);
 $results = $health->run();
 
-if ($results['status'] !== SEMONTO_ServerStates::ok) { http_response_code(500); }
+if ($results['status'] !== ServerStates::ok) { http_response_code(500); }
 
 header('Content-Type: application/json; charset=utf-8');
 echo wp_json_encode($results);

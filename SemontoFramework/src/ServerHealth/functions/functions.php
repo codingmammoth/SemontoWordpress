@@ -1,5 +1,7 @@
 <?php
 
+namespace Semonto\ServerHealth;
+
 function semonto_get_start_time()
 {
     $starttime = explode(' ', microtime());  
@@ -14,6 +16,7 @@ function semonto_get_running_time($starttime, $round = 5)
 }
 
 function semonto_get_tests ($config, $db) {
+
     try {
         $tests = [];
 
@@ -22,7 +25,9 @@ function semonto_get_tests ($config, $db) {
 
         foreach ($config['tests'] as $test) {
             $test_class = $test['test'];
+            $test_class_with_name_space = "Semonto\\ServerHealth\\$test_class";
             $test_config = $test['config'];
+
 
             $include_path = false;
             if (file_exists(__DIR__ . $include_path_custom_tests . $test_class . '.php')) {
@@ -35,7 +40,7 @@ function semonto_get_tests ($config, $db) {
             }
 
             require_once $include_path;
-            $tests[] = new $test_class($test_config, $db);
+            $tests[] = new $test_class_with_name_space($test_config, $db);
         }
 
         return $tests;
