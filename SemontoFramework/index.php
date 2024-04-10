@@ -1,8 +1,8 @@
 <?php
 
 use function Semonto\ServerHealth\{
-    semonto_validate_secret_key,
-    semonto_get_tests
+    validateSecretKey,
+    getTests
 };
 
 use Semonto\ServerHealth\{
@@ -18,12 +18,12 @@ require_once __DIR__."/src/ServerHealth/ServerStates.php";
 
 $config = semonto_get_config();
 
-if (!semonto_validate_secret_key($config)) {
+if (!validateSecretKey($config)) {
     http_response_code(403);
     exit();
 }
 
-$tests = semonto_get_tests($config, false);
+$tests = getTests($config, false);
 $health = new ServerHealth();
 $health->tests($tests);
 $results = $health->run();

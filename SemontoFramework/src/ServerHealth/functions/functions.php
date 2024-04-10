@@ -15,7 +15,7 @@ function semonto_get_running_time($starttime, $round = 5)
     return round($totaltime, $round);
 }
 
-function semonto_get_tests ($config, $db) {
+function getTests ($config, $db) {
 
     try {
         $tests = [];
@@ -50,7 +50,7 @@ function semonto_get_tests ($config, $db) {
     }
 }
 
-function semonto_validate_secret_key($config)
+function validateSecretKey($config)
 {
     if (isset($config['secret_key']) && $config['secret_key'] !== '') {
         if (isset($_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY'])) {
