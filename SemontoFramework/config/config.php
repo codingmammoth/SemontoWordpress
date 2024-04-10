@@ -1,5 +1,7 @@
 <?php
-//build the config file
+
+namespace Semonto\ServerHealth;
+
 function  getConfig() {
-    return generate_semonto_config();
+    return semonto_generate_config();
 }

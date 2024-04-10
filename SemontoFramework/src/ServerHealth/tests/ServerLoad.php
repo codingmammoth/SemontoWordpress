@@ -1,5 +1,13 @@
 <?php
 
+namespace Semonto\ServerHealth;
+
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealthResult,
+    ServerHealthTest
+};
+
 require_once __DIR__ . "../../ServerHealthTest.php";
 
 class ServerLoad extends ServerHealthTest

@@ -1,5 +1,11 @@
 <?php
 
+namespace Semonto\ServerHealth;
+
+use Semonto\ServerHealth\{
+    ServerStates
+};
+
 class ServerHealth
 {
     private $tests = [];

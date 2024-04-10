@@ -1,5 +1,12 @@
 <?php
 
+namespace Semonto\ServerHealth;
+
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealthResult
+};
+
 require_once __DIR__."/ServerHealthResult.php";
 require_once __DIR__."/ServerStates.php";
 

@@ -1,5 +1,7 @@
 <?php
 
+namespace Semonto\ServerHealth;
+
 function getStartTime()
 {
     $starttime = explode(' ', microtime());  
@@ -14,6 +16,7 @@ function getRunningTime($starttime, $round = 5)
 }
 
 function getTests ($config, $db) {
+
     try {
         $tests = [];
 
@@ -22,7 +25,9 @@ function getTests ($config, $db) {
 
         foreach ($config['tests'] as $test) {
             $test_class = $test['test'];
+            $test_class_with_name_space = "Semonto\\ServerHealth\\$test_class";
             $test_config = $test['config'];
+
 
             $include_path = false;
             if (file_exists(__DIR__ . $include_path_custom_tests . $test_class . '.php')) {
@@ -35,7 +40,7 @@ function getTests ($config, $db) {
             }
 
             require_once $include_path;
-            $tests[] = new $test_class($test_config, $db);
+            $tests[] = new $test_class_with_name_space($test_config, $db);
         }
 
         return $tests;
@@ -49,7 +54,8 @@ function validateSecretKey($config)
 {
     if (isset($config['secret_key']) && $config['secret_key'] !== '') {
         if (isset($_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY'])) {
-            return strcmp($config['secret_key'], $_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY']) === 0;
+            $access_key = sanitize_text_field($_SERVER['HTTP_HEALTH_MONITOR_ACCESS_KEY']);
+            return strcmp($config['secret_key'], $access_key) === 0;
         } else {
             return false;
         }

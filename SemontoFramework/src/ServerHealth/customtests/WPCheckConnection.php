@@ -1,7 +1,21 @@
 <?php
+
+namespace Semonto\ServerHealth;
+
+use function Semonto\ServerHealth\{
+    getStartTime,
+    getRunningTime
+};
+
+use Semonto\ServerHealth\{
+    ServerStates,
+    ServerHealthResult,
+    ServerHealthTest
+};
+
 require_once __DIR__ . "../../ServerHealthTest.php";
 
-class WPcheckConnection extends ServerHealthTest{
+class WPCheckConnection extends ServerHealthTest{
 
     protected function performTests() {
         global $wpdb;

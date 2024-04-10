@@ -280,7 +280,7 @@ function semonto_health_monitor_settings_page() {
     <?php
 }
 
-run_semonto_health_endpoint();
+semonto_run_health_endpoint();
 add_action('admin_menu', function () {
     add_options_page(
         'Semonto Health Monitor Settings',

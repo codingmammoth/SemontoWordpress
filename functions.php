@@ -37,7 +37,7 @@ function semonto_health_monitor_save_settings() {
 }
 
 // generates the config to be passed tot the config.php file
-function generate_semonto_config() {
+function semonto_generate_config() {
     $config = [
             'db' => [
                 'connect' => false,
@@ -46,7 +46,7 @@ function generate_semonto_config() {
                 'db_pass' => '',
                 'db_port' => 3306,
             ],
-            'tests' => generate_tests_config()
+            'tests' => semonto_generate_tests_config()
         ];
 
         $secret_key = get_option('semonto_secret_key');
@@ -57,7 +57,7 @@ function generate_semonto_config() {
 }
 
 // generates an array with the enabled tests 
-function generate_tests_config() {
+function semonto_generate_tests_config() {
     $config = [];
     if (get_option('semonto_enable_now_test')) {
         $config[] = [
@@ -129,7 +129,7 @@ function semonto_health_check_query_var($public_query_vars) {
  *
  * @since    1.0.0
  */
-function run_semonto_health_endpoint() {
+function semonto_run_health_endpoint() {
     add_filter("query_vars", "semonto_health_check_query_var", 10, 1);
     add_action('parse_request', 'semonto_health_check_request',10,1);
     add_action('init', 'semonto_health_monitor_rewrite_rules',10); 
@@ -167,11 +167,16 @@ function semonto_show_account_notice () {
     }
 }
 
-function semonto_notice_dismissed() {
-    $user_id = get_current_user_id();
-    if ( isset( $_GET['page'] ) && $_GET['page'] === 'semonto_health_monitor_settings' && isset( $_GET['action'] ) && $_GET['action'] === 'dismiss-account-notice' ) {
-        add_user_meta( $user_id, 'semonto_notice_dismissed', 'true', true );
-        wp_redirect( remove_query_arg("action") );
-        exit();
+function semonto_notice_dismissed () {
+    if (isset( $_GET['page'] ) && isset( $_GET['action'] )) {
+        $page = sanitize_text_field( $_GET['page'] );
+        $action = sanitize_text_field( $_GET['action'] );
+
+        if ($page === 'semonto_health_monitor_settings' && $action === 'dismiss-account-notice') {
+            $user_id = get_current_user_id();
+            add_user_meta( $user_id, 'semonto_notice_dismissed', 'true', true );
+            wp_redirect( remove_query_arg("action") );
+            exit();
+        }
     }
 }

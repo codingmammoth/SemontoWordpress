@@ -1,5 +1,7 @@
 <?php
 
+namespace Semonto\ServerHealth;
+
 class ServerStates {
     public const ok = 'ok';
     public const warning = 'warning';

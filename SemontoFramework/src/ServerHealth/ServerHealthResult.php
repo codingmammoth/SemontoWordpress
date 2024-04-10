@@ -1,5 +1,7 @@
 <?php
 
+namespace Semonto\ServerHealth;
+
 class ServerHealthResult
 {
     private $name = '';
