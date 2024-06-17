@@ -84,186 +84,25 @@ function semonto_health_monitor_settings_page() {
                 ?>
 
                 <div class="form">
-                    <div >
+                    <div>
                         <div class="tests">
                             <br>
                             <p>
                                 If you want to use server health monitoring you can specify the tests below.
                             </p>
                         </div>
-            
-                        <div class="input-tests">
-                            <h3>Load tests</h3>
-                            <p>Get notified when the load of your server is too high</p>
-                            
-                            <div class="warning-error">
-                                <div class="warning one load">Warning threshold</div>
-                                <div class="warning">Error threshold</div>
-                            </div>
 
-                            <div class="input-fields">
-                                <div class="input-fields-text">
-                                    <p class="title-test">Load now:</p>
-                                    <div class="switch-option">
-                                        <label class="switch">
-                                            <input 
-                                                type="checkbox" 
-                                                name="semonto_enable_now_test" 
-                                                value="1" 
-                                                <?php checked(1,get_option('semonto_enable_now_test')); ?>
-                                            />
-                                        <span class="slider round"></span>
-                                        </label>
-                                    </div>
-                                    <input 
-                                        type="number" 
-                                        min="1" 
-                                        max="100" 
-                                        name="semonto_warning_threshold_now" 
-                                        value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_now', 5))); ?>" 
-                                        class="semonto_serverload" 
-                                    />
-                                    <input 
-                                        type="number" 
-                                        min="1" 
-                                        max="100" 
-                                        name="semonto_error_threshold_now" 
-                                        value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_now', 15))); ?>" 
-                                        class="semonto_serverload" 
-                                    />
-                                </div>
-                            </div>
+                    <?php include 'semonto-health-monitor__server-load.php';?>
 
-                            <div class="input-fields">
-                                <div class="input-fields-text">
-                                    <p class="title-test">Load average 5 minutes:</p>
-                                    <div class="switch-option">
-                                        <label class="switch">
-                                            <input 
-                                                type="checkbox" 
-                                                name="semonto_enable_5m_test" 
-                                                value="1" 
-                                                <?php checked(1,get_option('semonto_enable_5m_test')); ?> 
-                                            />
-                                            <span class="slider round"></span>
-                                        </label>   
-                                    </div>
-                                    <input 
-                                        type="number"
-                                        min="1" 
-                                        max="100" 
-                                        name="semonto_warning_threshold_5m" 
-                                        value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_5m',5))); ?>" 
-                                        class="semonto_serverload" 
-                                    />
-                                    <input 
-                                        type="number" 
-                                        min="1" 
-                                        max="100" 
-                                        name="semonto_error_threshold_5m" 
-                                        value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_5m',15))); ?>" 
-                                        class="semonto_serverload"
-                                    />
-                                </div>
-                            </div>
-            
-                            <div class="input-fields">
-                                <div class="input-fields-text">
-                                    <p class="title-test"> Load average 15 minutes:</p>
-                                    <div class="switch-option">
-                                        <label class="switch">
-                                            <input 
-                                                type="checkbox" 
-                                                name="semonto_enable_15m_test" 
-                                                value="1" <?php checked(1,get_option('semonto_enable_15m_test')); ?>
-                                            />
-                                            <span class="slider round"></span>
-                                        </label>
-                                    </div>
-                                     <input 
-                                        type="number" 
-                                        min="0" 
-                                        max="100" 
-                                        name="semonto_warning_threshold_15m" 
-                                        value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_15m',5))); ?>" 
-                                        class="semonto_serverload"
-                                    />
-                                     <input
-                                        type="number" 
-                                        min="0" 
-                                        max="100" 
-                                        name="semonto_error_threshold_15m" 
-                                        value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_15m',15))); ?>" 
-                                        class="semonto_serverload"
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                  
-   
-                    <div class="input-tests">
-                        <h3 scope="row">Wordpress Database Test</h3>
-                        <p>
-                            Get notified if there are issues with your database. Semonto will also 
-                            check how many current database connections are in use and what your 
-                            limit is.
-                        </p>
+                    <?php include 'semonto-health-monitor__memory-usage.php';?>
 
-                        <div class="warning-error">
-                            <div class="warning one">Warning percentage</div>
-                            <div class="warning">Error percentage</div>
-                        </div>
+                    <?php include 'semonto-health-monitor__disk-space.php';?>
 
-                        <div class="input-fields">
-                            <div class="input-fields-text">
-                                <p class="title-test">Enable database test:</p>
-                                <div class="switch-option">
-                                    <label class="switch">
-                                        <input 
-                                            type="checkbox" 
-                                            name="semonto_enable_wpdb_test" 
-                                            value="1" 
-                                            <?php checked(1,get_option('semonto_enable_wpdb_test')); ?> 
-                                        />
-                                        <span class="slider round"></span>
-                                    </label>
-                                </div>
-                                <input 
-                                    type="number" 
-                                    min="1" 
-                                    max="100" 
-                                    name="semonto_warning_threshold_wpdb" 
-                                    value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_wpdb',75))); ?>"
-                                    class="semonto_serverload" 
-                                />
-                                <input 
-                                    type="number" 
-                                    min="1" 
-                                    max = "100" 
-                                    name="semonto_error_threshold_wpdb" 
-                                    value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_wpdb',90))); ?>" 
-                                    class="semonto_serverload"  
-                                />
-                            </div>
-                        </div>
-                    </div>
+                    <?php include 'semonto-health-monitor__database.php';?>
 
-                    <div class="test-field">
-                        <h3 class="titles">Secret key</h3>
-                        <p>
-                            If you want to add an extra layer of protection, copy the secret key from the 
-                            monitor settings in Semonto. This will limit exposure of your health endpoint.
-                        </p>
-                        <div class="options">
-                            <input 
-                                id="secret-key" 
-                                type="text" 
-                                name="semonto_secret_key" 
-                                value="<?php echo esc_attr(get_option('semonto_secret_key'),); ?>" 
-                                class="input-field"
-                            />
-                        </div>
-                    </div>
+                    <?php include 'semonto-health-monitor__secret-key.php';?>
+
+                    <?php include 'semonto-health-monitor__caching.php';?>
 
                 </div>
 
