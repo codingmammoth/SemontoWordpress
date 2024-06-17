@@ -50,6 +50,21 @@ function getTests ($config, $db) {
     }
 }
 
+function connectToDB($config)
+{
+    try {
+        $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], null, $config['db_port']);
+
+        if ($db->connect_errno) {
+            return false;
+        } else {
+            return $db;
+        }
+    } catch (\Throwable $th) {
+        return false;
+    }
+}
+
 function validateSecretKey($config)
 {
     if (isset($config['secret_key']) && $config['secret_key'] !== '') {
@@ -62,4 +77,74 @@ function validateSecretKey($config)
     } else {
         return true;
     }
+}
+
+function getCacheConfig($config, $installation_directory)
+{
+    $cache_enabled = false;
+    $cache_location = sys_get_temp_dir();
+    $cache_file_path = '';
+    $cache_life_span = 45;
+
+    if (isset($config['cache'])) {
+        if (isset($config['cache']['enabled']) && $config['cache']['enabled']) {
+            $cache_enabled = true;
+        }
+
+        if (isset($config['cache']['location'])) {
+            $cache_location = (string) $config['cache']['location'];
+        }
+
+        if (isset($config['cache']['life_span'])) {
+            $cache_life_span = (int) $config['cache']['life_span'];
+        }
+
+        $cache_file_path = getCacheFilePath($cache_location, $installation_directory);
+    }
+
+    return [ $cache_enabled, $cache_file_path, $cache_life_span ];
+}
+
+function getCacheFilePath($cache_location, $installed_directory)
+{
+    return $cache_location . '/server_health_' . md5($installed_directory) . '.json';
+}
+
+function cacheResults($cache_file_path, $results)
+{
+    try {
+        $cache = [
+            'time' => time(),
+            'results' => $results
+        ];
+        $json = json_encode($cache);
+        $fh = fopen($cache_file_path, 'w');
+        if ($fh) {
+            fwrite($fh, $json);
+            fclose($fh);
+        }
+    } catch (\Throwable $th) {
+        // Couldn't store the results in the cache, continue without storing the results.
+    }
+}
+
+function getCachedResults($cache_file_path, $cache_life_span)
+{
+    $results = false;
+    try {
+        if (file_exists($cache_file_path)) {
+            $cached_data = file_get_contents($cache_file_path);
+            if ($cached_data) {
+                $cached_data = json_decode($cached_data, true);
+
+                if (isset($cached_data['results']['status']) && time() - $cached_data['time'] <= $cache_life_span) {
+                    $results = $cached_data['results'];
+                }
+            }
+        }
+    } catch (\Throwable $th) {
+        // Failed to get the cached results, continue without the cached results.
+    }
+
+    return $results;
 }
