@@ -34,6 +34,11 @@ function semonto_health_monitor_save_settings() {
     register_setting('semonto_health_monitor_settings', 'semonto_enable_wpdb_test');
     register_setting('semonto_health_monitor_settings', 'semonto_error_threshold_wpdb');
     register_setting('semonto_health_monitor_settings', 'semonto_warning_threshold_wpdb');
+    
+    // Memory usage
+    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable');
+    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_warning_threshold');
+    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_error_threshold');
 }
 
 // generates the config to be passed tot the config.php file
@@ -59,6 +64,7 @@ function semonto_generate_config() {
 // generates an array with the enabled tests 
 function semonto_generate_tests_config() {
     $config = [];
+
     if (get_option('semonto_enable_now_test')) {
         $config[] = [
             'test' => 'ServerLoad',
@@ -66,18 +72,21 @@ function semonto_generate_tests_config() {
         ];
         
     }
+
     if (get_option('semonto_enable_5m_test')) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 'type' => 'average_5_min', 'warning_threshold' => get_option('semonto_warning_threshold_5m'), 'error_threshold' => get_option('semonto_error_threshold_5m') ]
         ];
     }
+
     if (get_option('semonto_enable_15m_test')) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 'type' => 'average_15_min', 'warning_threshold' => get_option('semonto_warning_threshold_15m'), 'error_threshold' => get_option('semonto_error_threshold_15m') ]
         ];
     }
+
     if (get_option('semonto_enable_wpdb_test')) {
         $config[] = [
             'test' => 'WPCheckConnection',
@@ -86,6 +95,15 @@ function semonto_generate_tests_config() {
         $config[] = [
             'test'=>'WPMaxDatabaseConnections',
             'config' => [ 'warning_percentage_threshold' => get_option('semonto_warning_threshold_wpdb'), 'error_percentage_threshold' =>get_option('semonto_error_threshold_wpdb') ]
+        ];
+    }
+
+    if (get_option('semonto_memory_usage_enable')) {
+        $config[] = [
+            'test' => 'MemoryUsage',
+            'config' => [
+                'warning_percentage_threshold' => (int) get_option('semonto_memory_usage_enable_warning_threshold'),
+                'error_percentage_threshold' => (int) get_option('semonto_memory_usage_enable_error_threshold') ]
         ];
     }
 
