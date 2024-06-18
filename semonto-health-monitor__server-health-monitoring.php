@@ -13,7 +13,7 @@
     <p>Semonto will start monitoring your server and notify you if any issues are found.</p>
     <p>
         Read more about how you can
-        <a href="https://semonto.com/how-to/how-to-monitor-your-website" target="_blank">
+        <a href="https://semonto.com/how-to/how-to-monitor-a-wordpress-website-with-semonto" target="_blank">
             <u>configure the settings.</u>
         </a>
     </p>
