@@ -84,13 +84,13 @@ function semonto_health_monitor_settings_page() {
                 ?>
 
                 <div class="form">
-                    <div>
-                        <div class="tests">
-                            <br>
-                            <p>
-                                If you want to use server health monitoring you can specify the tests below.
-                            </p>
-                        </div>
+
+                    <div class="tests">
+                        <br>
+                        <p>
+                            If you want to use server health monitoring you can specify the tests below.
+                        </p>
+                    </div>
 
                     <?php include 'semonto-health-monitor__server-load.php';?>
 
