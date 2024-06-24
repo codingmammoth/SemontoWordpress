@@ -40,6 +40,8 @@
 
             <?php include 'semonto-health-monitor__disk-space.php'; ?>
 
+            <?php include 'semonto-health-monitor__disk-space-inode.php'; ?>
+
             <?php include 'semonto-health-monitor__database.php'; ?>
 
             <?php include 'semonto-health-monitor__secret-key.php'; ?>
