@@ -119,6 +119,50 @@ function semonto_generate_tests_config() {
         ];
     }
 
+    if (get_option('semonto_disk_space_enable')) {
+        $test_config = [
+            'test' => 'DiskSpace',
+            'config' => [
+                'disks' => []
+            ]
+        ];
+
+        $configured_disks = get_option('semonto_disk_space_config');
+        foreach ($configured_disks as $configured_disk => $disk_config) {
+            if (isset($disk_config['enabled']) && (int) $disk_config['enabled']) {
+                $test_config['config']['disks'][] = [
+                    'name' => $configured_disk,
+                    'warning_percentage_threshold' => $disk_config['warning_percentage_threshold'],
+                    'error_percentage_threshold' => $disk_config['error_percentage_threshold']
+                ];
+            }
+        }
+
+        $config[] = $test_config;
+    }
+
+    if (get_option('semonto_disk_space_inode_enable')) {
+        $test_config = [
+            'test' => 'DiskSpaceInode',
+            'config' => [
+                'disks' => []
+            ]
+        ];
+
+        $configured_disks = get_option('semonto_disk_space_inode_config');
+        foreach ($configured_disks as $configured_disk => $disk_config) {
+            if (isset($disk_config['enabled']) && (int) $disk_config['enabled']) {
+                $test_config['config']['disks'][] = [
+                    'name' => $configured_disk,
+                    'warning_percentage_threshold' => (int) $disk_config['warning_percentage_threshold'],
+                    'error_percentage_threshold' => (int) $disk_config['error_percentage_threshold']
+                ];
+            }
+        }
+
+        $config[] = $test_config;
+    }
+
     return $config;
 }
 
