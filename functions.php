@@ -221,7 +221,11 @@ function semonto_get_available_disks ()
         if (trim($lines[$i]) != '') {
             $cols = preg_split('/\s+/', $lines[$i]);
             if (preg_match('/^\/dev\//', $cols[0])) {
-                $disks[] = $cols[0];
+                $disks[$cols[0]] = [
+                    "warning_percentage_threshold" => 75,
+                    "error_percentage_threshold" => 90,
+                    "enabled" => 0
+                ];
             }
         }
     }
@@ -231,16 +235,8 @@ function semonto_get_available_disks ()
 
 function semonto_get_disk_space_config ()
 {
-    $available_disks = semonto_get_available_disks();
-
-    $disk_space_config = [];
-    foreach ($available_disks as $available_disk) {
-        $disk_space_config[$available_disk] = [
-            "warning_percentage_threshold" => 75,
-            "error_percentage_threshold" => 90,
-            "enabled" => 0
-        ];
-    }
+    $disk_space_config = semonto_get_available_disks();
+    $available_disks = array_keys($disk_space_config);
 
     $configured_disks = get_option('semonto_disk_space_config');
     foreach ($configured_disks as $disk_name => $disk_config) {
@@ -250,5 +246,19 @@ function semonto_get_disk_space_config ()
     }
 
     return $disk_space_config;
+}
 
+function semonto_get_disk_space_inode_config ()
+{
+    $disk_space_config = semonto_get_available_disks();
+    $available_disks = array_keys($disk_space_config);
+
+    $configured_disks = get_option('semonto_disk_space_inode_config');
+    foreach ($configured_disks as $disk_name => $disk_config) {
+        if (in_array($disk_name, $available_disks)) {
+            $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+        }
+    }
+
+    return $disk_space_config;
 }
