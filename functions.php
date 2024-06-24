@@ -39,6 +39,18 @@ function semonto_health_monitor_save_settings() {
     register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable');
     register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_warning_threshold');
     register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_error_threshold');
+
+    // DiskSpace
+    register_setting('semonto_health_monitor_settings', "semonto_disk_space_enable");
+    register_setting('semonto_health_monitor_settings', "semonto_disk_space_config", [
+        'type' => 'object'
+    ]);
+
+    // DiskSpaceInode
+    register_setting('semonto_health_monitor_settings', "semonto_disk_space_inode_enable");
+    register_setting('semonto_health_monitor_settings', "semonto_disk_space_inode_config", [
+        'type' => 'object'
+    ]);
 }
 
 // generates the config to be passed tot the config.php file
@@ -197,4 +209,46 @@ function semonto_notice_dismissed () {
             exit();
         }
     }
+}
+
+function semonto_get_available_disks ()
+{
+    $output = shell_exec('df -h');
+    $lines = explode("\n", $output);
+    $disks = [];
+
+    for ($i = 1; $i < count($lines); $i++) {
+        if (trim($lines[$i]) != '') {
+            $cols = preg_split('/\s+/', $lines[$i]);
+            if (preg_match('/^\/dev\//', $cols[0])) {
+                $disks[] = $cols[0];
+            }
+        }
+    }
+
+    return $disks;
+}
+
+function semonto_get_disk_space_config ()
+{
+    $available_disks = semonto_get_available_disks();
+
+    $disk_space_config = [];
+    foreach ($available_disks as $available_disk) {
+        $disk_space_config[$available_disk] = [
+            "warning_percentage_threshold" => 75,
+            "error_percentage_threshold" => 90,
+            "enabled" => 0
+        ];
+    }
+
+    $configured_disks = get_option('semonto_disk_space_config');
+    foreach ($configured_disks as $disk_name => $disk_config) {
+        if (in_array($disk_name, $available_disks)) {
+            $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+        }
+    }
+
+    return $disk_space_config;
+
 }
