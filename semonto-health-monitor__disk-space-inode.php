@@ -34,7 +34,7 @@
                             <input
                                 type="checkbox"
                                 name="semonto_disk_space_inode_config[<?php echo $disk_name; ?>][enabled]"
-                                value="1" <?php echo $disk_config['enabled'] ? 'checked' : ''; ?>
+                                value="1" <?php checked(1, $disk_config['enabled']); ?>
                             />
                             <span class="slider round"></span>
                         </label>
