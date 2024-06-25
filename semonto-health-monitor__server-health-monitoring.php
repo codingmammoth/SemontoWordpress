@@ -21,8 +21,8 @@
     <form method="post" action="options.php">
 
         <?php
-        settings_fields('semonto_health_monitor_settings');
-        do_settings_sections('semonto_health_monitor_settings');
+            settings_fields('semonto_health_monitor_settings');
+            do_settings_sections('semonto_health_monitor_settings');
         ?>
 
         <div class="form">
