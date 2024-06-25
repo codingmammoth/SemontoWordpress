@@ -316,7 +316,6 @@ function semonto_sanitize_disk_config($setting, $new_settings)
 
     try {
         foreach ($new_settings as $disk => $config) {
-            // var_dump($disk, $config);
             if (!isset($config['warning_percentage_threshold']) || !isset($config['error_percentage_threshold'])) {
                 add_settings_error($setting, "$setting-$disk", 'Please provide a warning and an error threshold.');
                 return $previous_settings;
@@ -325,6 +324,9 @@ function semonto_sanitize_disk_config($setting, $new_settings)
                 return $previous_settings;
             } else if ((int) $config['warning_percentage_threshold'] >= (int) $config['error_percentage_threshold']) {
                 add_settings_error($setting, "$setting-$disk", 'The warning threshold should be lower than the error threshold.');
+                return $previous_settings;
+            } else if ((int) $config['warning_percentage_threshold'] < 0 || (int) $config['warning_percentage_threshold'] > 100 || (int) $config['error_percentage_threshold'] < 0 || (int) $config['error_percentage_threshold'] > 100) {
+                add_settings_error($setting, "$setting-$disk", 'The warning thresholds should be a number 0 to 100.');
                 return $previous_settings;
             }
         }
