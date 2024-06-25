@@ -58,20 +58,21 @@ function semonto_health_monitor_save_settings() {
 // generates the config to be passed tot the config.php file
 function semonto_generate_config() {
     $config = [
-            'db' => [
-                'connect' => false,
-                'db_host' => 'localhost',
-                'db_user' =>'root',
-                'db_pass' => '',
-                'db_port' => 3306,
-            ],
-            'tests' => semonto_generate_tests_config()
-        ];
+        'db' => [
+            'connect' => false,
+            'db_host' => 'localhost',
+            'db_user' =>'root',
+            'db_pass' => '',
+            'db_port' => 3306,
+        ],
+        'tests' => semonto_generate_tests_config()
+    ];
 
-        $secret_key = get_option('semonto_secret_key');
-        if(strlen($secret_key)>0){
-            $config['secret_key'] = trim($secret_key);
-        }
+    $secret_key = get_option('semonto_secret_key');
+    if(strlen($secret_key)>0){
+        $config['secret_key'] = trim($secret_key);
+    }
+
     return $config;
 }
 
