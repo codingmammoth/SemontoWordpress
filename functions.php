@@ -43,13 +43,15 @@ function semonto_health_monitor_save_settings() {
     // DiskSpace
     register_setting('semonto_health_monitor_settings', "semonto_disk_space_enable");
     register_setting('semonto_health_monitor_settings', "semonto_disk_space_config", [
-        'type' => 'object'
+        'type' => 'object',
+        // 'sanitize_callback' => 'semonto_sanitize_disk_space_config'
     ]);
 
     // DiskSpaceInode
     register_setting('semonto_health_monitor_settings', "semonto_disk_space_inode_enable");
     register_setting('semonto_health_monitor_settings', "semonto_disk_space_inode_config", [
-        'type' => 'object'
+        'type' => 'object',
+        'sanitize_callback' => 'semonto_sanitize_disk_space_inode_config'
     ]);
 }
 
@@ -115,7 +117,8 @@ function semonto_generate_tests_config() {
             'test' => 'MemoryUsage',
             'config' => [
                 'warning_percentage_threshold' => (int) get_option('semonto_memory_usage_enable_warning_threshold'),
-                'error_percentage_threshold' => (int) get_option('semonto_memory_usage_enable_error_threshold') ]
+                'error_percentage_threshold' => (int) get_option('semonto_memory_usage_enable_error_threshold')
+            ]
         ];
     }
 
@@ -305,4 +308,39 @@ function semonto_get_disk_space_inode_config ()
     }
 
     return $disk_space_config;
+}
+
+function semonto_sanitize_disk_config($setting, $new_settings)
+{
+    $previous_settings = get_option($setting);
+
+    try {
+        foreach ($new_settings as $disk => $config) {
+            // var_dump($disk, $config);
+            if (!isset($config['warning_percentage_threshold']) || !isset($config['error_percentage_threshold'])) {
+                add_settings_error($setting, "$setting-$disk", 'Please provide a warning and an error threshold.');
+                return $previous_settings;
+            } else if ($config['warning_percentage_threshold'] === '' || $config['warning_percentage_threshold'] === null || $config['error_percentage_threshold'] === '' || $config['error_percentage_threshold'] === null) {
+                add_settings_error($setting, "$setting-$disk", 'Please provide a warning and an error threshold.');
+                return $previous_settings;
+            } else if ((int) $config['warning_percentage_threshold'] >= (int) $config['error_percentage_threshold']) {
+                add_settings_error($setting, "$setting-$disk", 'The warning threshold should be lower than the error threshold.');
+                return $previous_settings;
+            }
+        }
+    } catch (\Throwable $th) {
+        return $previous_settings;
+    }
+
+    return $new_settings;
+}
+
+function semonto_sanitize_disk_space_config($new_value)
+{
+    return semonto_sanitize_disk_config('semonto_disk_space_config', $new_value);
+}
+
+function semonto_sanitize_disk_space_inode_config($new_value)
+{
+    return semonto_sanitize_disk_config('semonto_disk_space_inode_config', $new_value);
 }
