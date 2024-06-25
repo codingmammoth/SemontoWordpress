@@ -44,7 +44,7 @@ function semonto_health_monitor_save_settings() {
     register_setting('semonto_health_monitor_settings', "semonto_disk_space_enable");
     register_setting('semonto_health_monitor_settings', "semonto_disk_space_config", [
         'type' => 'object',
-        // 'sanitize_callback' => 'semonto_sanitize_disk_space_config'
+        'sanitize_callback' => 'semonto_sanitize_disk_space_config'
     ]);
 
     // DiskSpaceInode
