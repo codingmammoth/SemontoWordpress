@@ -12,6 +12,8 @@ class SemontoHealthMonitor {
     const errorMessageDiv = inputFieldsDiv.querySelector('.error-message')
 
     if (warning >= error) {
+      this.errors = true
+
       if (!errorMessageDiv) {
         const errorMessage = document.createElement('div')
         errorMessage.className = 'error-message'
@@ -117,8 +119,7 @@ class SemontoHealthMonitor {
     }
   }
 
-  // tests read only on page reload or refresh
-  initializeTests () {
+  validateDiskTests () {
     this.tests.forEach((test) => {
       const enableCheckbox = this.formElement.querySelector('input[name="semonto_enable_' + test + '_test"]')
       const warningField = this.formElement.querySelector('input[name="semonto_warning_threshold_' + test + '"]')
@@ -129,7 +130,7 @@ class SemontoHealthMonitor {
     })
   }
 
-  initializeDiskSpaceTests() {
+  validateDiskSpaceTests() {
     this.diskSpaceTests.forEach((test) => {
       const checkBoxes = Array.from(this.formElement.querySelectorAll('input[type="checkbox"][name^="semonto_config_' + test + '["]'))
 
@@ -150,9 +151,14 @@ class SemontoHealthMonitor {
   handleSubmit (event) {
     event.preventDefault()
 
-    // TODO: Add validation.
+    this.errors = false
 
-    this.formElement.submit()
+    this.validateDiskTests()
+    this.validateDiskSpaceTests()
+
+    if (!this.errors) {
+      this.formElement.submit()
+    }
   }
 
   constructor () {
@@ -162,10 +168,9 @@ class SemontoHealthMonitor {
       this.formElement.addEventListener('change', (event) => this.handleCheckboxChange(event))
       this.formElement.addEventListener('input', (event) => this.handleInput(event))
 
-      this.initializeTests()
-      this.initializeDiskSpaceTests()
+      this.validateDiskTests()
+      this.validateDiskSpaceTests()
 
-      // Prevent submit
       this.formElement.addEventListener('submit', (event) => {
         this.handleSubmit(event)
       })
