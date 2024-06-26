@@ -86,14 +86,14 @@ function semonto_health_monitor_save_settings() {
     register_setting('semonto_health_monitor_settings', 'semonto_error_threshold_wpdb', [
         'type' => 'integer',
         'sanitize_callback' => function($new_value) {
-            return semonto_sanitize_db_test_threshold('semonto_error_threshold_wpdb', $new_value);
+            return semonto_sanitize_threshold_percentage('semonto_error_threshold_wpdb', $new_value);
         }
     ]);
 
     register_setting('semonto_health_monitor_settings', 'semonto_warning_threshold_wpdb', [
         'type' => 'integer',
         'sanitize_callback' => function($new_value) {
-            return semonto_sanitize_db_test_threshold('semonto_warning_threshold_wpdb', $new_value);
+            return semonto_sanitize_threshold_percentage('semonto_warning_threshold_wpdb', $new_value);
         }
     ]);
 
@@ -101,8 +101,20 @@ function semonto_health_monitor_save_settings() {
     register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable', [
         'type' => 'boolean'
     ]);
-    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_warning_threshold');
-    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_error_threshold');
+
+    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_warning_threshold', [
+        'type' => 'integer',
+        'sanitize_callback' => function($new_value) {
+            return semonto_sanitize_threshold_percentage('semonto_memory_usage_enable_warning_threshold', $new_value);
+        }
+    ]);
+
+    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_error_threshold', [
+        'type' => 'integer',
+        'sanitize_callback' => function($new_value) {
+            return semonto_sanitize_threshold_percentage('semonto_memory_usage_enable_error_threshold', $new_value);
+        }
+    ]);
 
     // DiskSpace
     register_setting('semonto_health_monitor_settings', "semonto_disk_space_enable");
@@ -437,7 +449,7 @@ function semonto_sanitize_load_test_threshold($setting, $new_value)
     return $new_value;
 }
 
-function semonto_sanitize_db_test_threshold($setting, $new_value)
+function semonto_sanitize_threshold_percentage($setting, $new_value)
 {
     if ((int) $new_value < 0 || (int) $new_value > 100) {
         add_settings_error($setting, $setting, 'The threshold should be a number from 0 to 100.');
