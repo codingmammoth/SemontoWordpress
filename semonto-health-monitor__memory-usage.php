@@ -17,8 +17,8 @@
                     <label class="switch">
                         <input
                             type="checkbox"
-                            name="semonto_memory_usage_enable"
-                            value="1" <?php checked(1, get_option('semonto_memory_usage_enable')); ?>
+                            name="semonto_enable_memory_usage_test"
+                            value="1" <?php checked(1, get_option('semonto_enable_memory_usage_test')); ?>
                         />
                         <span class="slider round"></span>
                     </label>
@@ -27,16 +27,16 @@
                     type="number"
                     min="0"
                     max="100"
-                    name="semonto_memory_usage_enable_warning_threshold"
-                    value="<?php echo esc_attr(intval(get_option('semonto_memory_usage_enable_warning_threshold', 90))); ?>"
+                    name="semonto_warning_threshold_memory_usage"
+                    value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_memory_usage', 90))); ?>"
                     class="semonto_serverload"
                 />
                 <input
                     type="number"
                     min="0"
                     max="100"
-                    name="semonto_memory_usage_enable_error_threshold"
-                    value="<?php echo esc_attr(intval(get_option('semonto_memory_usage_enable_error_threshold', 95))); ?>"
+                    name="semonto_error_threshold_memory_usage"
+                    value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_memory_usage', 95))); ?>"
                     class="semonto_serverload"
                 />
             </div>

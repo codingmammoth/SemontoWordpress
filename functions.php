@@ -98,21 +98,21 @@ function semonto_health_monitor_save_settings() {
     ]);
 
     // Memory usage
-    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable', [
+    register_setting('semonto_health_monitor_settings', 'semonto_enable_memory_usage_test', [
         'type' => 'boolean'
     ]);
 
-    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_warning_threshold', [
+    register_setting('semonto_health_monitor_settings', 'semonto_warning_threshold_memory_usage', [
         'type' => 'integer',
         'sanitize_callback' => function($new_value) {
-            return semonto_sanitize_threshold_percentage('semonto_memory_usage_enable_warning_threshold', $new_value);
+            return semonto_sanitize_threshold_percentage('semonto_warning_threshold_memory_usage', $new_value);
         }
     ]);
 
-    register_setting('semonto_health_monitor_settings', 'semonto_memory_usage_enable_error_threshold', [
+    register_setting('semonto_health_monitor_settings', 'semonto_error_threshold_memory_usage', [
         'type' => 'integer',
         'sanitize_callback' => function($new_value) {
-            return semonto_sanitize_threshold_percentage('semonto_memory_usage_enable_error_threshold', $new_value);
+            return semonto_sanitize_threshold_percentage('semonto_error_threshold_memory_usage', $new_value);
         }
     ]);
 
@@ -206,12 +206,12 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if ($exec_available && get_option('semonto_memory_usage_enable')) {
+    if ($exec_available && get_option('semonto_enable_memory_usage_test')) {
         $config[] = [
             'test' => 'MemoryUsage',
             'config' => [
-                'warning_percentage_threshold' => (int) get_option('semonto_memory_usage_enable_warning_threshold'),
-                'error_percentage_threshold' => (int) get_option('semonto_memory_usage_enable_error_threshold')
+                'warning_percentage_threshold' => (int) get_option('semonto_warning_threshold_memory_usage'),
+                'error_percentage_threshold' => (int) get_option('semonto_error_threshold_memory_usage')
             ]
         ];
     }

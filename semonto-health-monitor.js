@@ -66,7 +66,7 @@ class SemontoHealthMonitor {
 
   // tests read only on page reload or refresh
   static initializeTests () {
-    const tests = ['now', '5m', '15m', 'wpdb']
+    const tests = ['now', '5m', '15m', 'wpdb', 'memory_usage']
 
     tests.forEach(function (test) {
       const enableCheckbox = document.querySelector('input[name="semonto_enable_' + test + '_test"]')
@@ -83,6 +83,6 @@ class SemontoHealthMonitor {
     document.addEventListener('input', SemontoHealthMonitor.handleInput)
 
     SemontoHealthMonitor.initializeTests()
-    SemontoHealthMonitor.initializeDiskSpaceTests()
+    // SemontoHealthMonitor.initializeDiskSpaceTests()
   }
 }
