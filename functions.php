@@ -154,11 +154,8 @@ function semonto_generate_config() {
 
 // generates an array with the enabled tests 
 function semonto_generate_tests_config() {
-
-    // TODO: Can still be disabled for security reasons.
     $exec_available = function_exists('exec');
     $shell_exec_available = function_exists('shell_exec');
-
     $config = [];
 
     if (get_option('semonto_enable_now_test')) {
