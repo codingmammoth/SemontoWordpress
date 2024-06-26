@@ -26,7 +26,7 @@
             </div>
             <input 
                 type="number" 
-                min="1" 
+                min="0" 
                 max="100" 
                 name="semonto_warning_threshold_wpdb" 
                 value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_wpdb', 75))); ?>" 
@@ -34,7 +34,7 @@
             />
             <input 
                 type="number" 
-                min="1" 
+                min="0" 
                 max="100" 
                 name="semonto_error_threshold_wpdb" 
                 value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_wpdb', 90))); ?>" 
