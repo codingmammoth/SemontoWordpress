@@ -1,3 +1,14 @@
+<?php
+        // TODO: Can still be disabled for security reasons.
+        $exec_available = function_exists('exec');
+        $shell_exec_available = function_exists('shell_exec');
+
+        // Check if shell_exec and exec exists and are enabled.
+        // https://stackoverflow.com/questions/2749591/php-exec-check-if-enabled-or-disabled
+
+        // https://stackoverflow.com/questions/4033841/how-to-test-if-php-system-function-is-allowed-and-not-turned-off-for-security
+?>
+
 <div>
     <h2>Server monitoring</h2>
     <p>
