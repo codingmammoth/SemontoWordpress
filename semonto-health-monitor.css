@@ -297,3 +297,14 @@
   margin-top: auto;
   margin-bottom: auto;
 }
+
+.semonto-health-monitor__not-available {
+  color: #2271b1;
+  background-color: #dae0e5;
+  border: 1px solid #2271b1;
+  border-radius: 0.25em;
+  margin-top: 1em !important;
+  padding: .5em;
+  font-size: 1em !important;
+  font-weight: 600;
+}
