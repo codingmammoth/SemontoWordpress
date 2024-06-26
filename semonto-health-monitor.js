@@ -1,6 +1,7 @@
 class SemontoHealthMonitor {
   tests = ['now', '5m', '15m', 'wpdb', 'memory_usage']
   diskSpaceTests = ['disk_space', 'disk_space_inode']
+  errors = false
 
   // check if the warning threshold is higher than the Error threshold and return a error
   checkThresholds (warningField, errorField) {
@@ -118,7 +119,6 @@ class SemontoHealthMonitor {
 
   // tests read only on page reload or refresh
   initializeTests () {
-    // Non-diskspace tests.
     this.tests.forEach((test) => {
       const enableCheckbox = this.formElement.querySelector('input[name="semonto_enable_' + test + '_test"]')
       const warningField = this.formElement.querySelector('input[name="semonto_warning_threshold_' + test + '"]')
@@ -127,24 +127,23 @@ class SemontoHealthMonitor {
       this.toggleInputFields(enableCheckbox, warningField, errorField)
       this.checkThresholds(warningField, errorField)
     })
-
-    // Diskspace tests.
   }
 
   initializeDiskSpaceTests() {
-    const tests = ['disk_space', 'disk_space_inode']
+    this.diskSpaceTests.forEach((test) => {
+      const checkBoxes = Array.from(this.formElement.querySelectorAll('input[type="checkbox"][name^="semonto_config_' + test + '["]'))
 
-    tests.forEach((test) => {
-      // Global checkbox, can be ignored.
-      // const enableCheckbox = this.formElement.querySelector('input[name="semonto_enable_' + test + '_test"]')
-      // const warningField = this.formElement.querySelector('input[name="semonto_warning_threshold_' + test + '"]')
-      // const errorField = this.formElement.querySelector('input[name="semonto_error_threshold_' + test + '"]')
+      checkBoxes.forEach((checkBox) => {
+        const checkBoxName = checkBox.name
+        const warningSelector = 'input[name="' + checkBoxName.replace('[enabled]', '[warning_percentage_threshold]' + '"]')
+        const errorSelector = 'input[name="' + checkBoxName.replace('[enabled]', '[error_percentage_threshold]' + '"]')
 
-      // console.log(enableCheckbox)
+        const warningField = this.formElement.querySelector(warningSelector)
+        const errorField = this.formElement.querySelector(errorSelector)
 
-
-      // this.toggleInputFields(enableCheckbox, warningField, errorField)
-      // this.checkThresholds(warningField, errorField)
+        this.toggleInputFields(checkBox, warningField, errorField)
+        this.checkThresholds(warningField, errorField)
+      })
     })
   }
 
@@ -164,7 +163,7 @@ class SemontoHealthMonitor {
       this.formElement.addEventListener('input', (event) => this.handleInput(event))
 
       this.initializeTests()
-      // this.initializeDiskSpaceTests()
+      this.initializeDiskSpaceTests()
 
       // Prevent submit
       this.formElement.addEventListener('submit', (event) => {
