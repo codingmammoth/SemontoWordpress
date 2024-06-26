@@ -13,8 +13,8 @@
                 <label class="switch">
                     <input
                     type="checkbox"
-                    name="semonto_disk_space_inode_enable"
-                    value="1" <?php checked(1, get_option('semonto_disk_space_inode_enable')); ?>
+                    name="semonto_enable_disk_space_inode_test"
+                    value="1" <?php checked(1, get_option('semonto_enable_disk_space_inode_test')); ?>
                     />
                     <span class="slider round"></span>
                 </label>
@@ -34,7 +34,7 @@
                             <label class="switch">
                                 <input
                                     type="checkbox"
-                                    name="semonto_disk_space_inode_config[<?php echo $disk_name; ?>][enabled]"
+                                    name="semonto_config_disk_space_inode[<?php echo $disk_name; ?>][enabled]"
                                     value="1" <?php checked(1, $disk_config['enabled']); ?>
                                 />
                                 <span class="slider round"></span>
@@ -44,7 +44,7 @@
                             type="number"
                             min="0"
                             max="100"
-                            name="semonto_disk_space_inode_config[<?php echo $disk_name; ?>][warning_percentage_threshold]"
+                            name="semonto_config_disk_space_inode[<?php echo $disk_name; ?>][warning_percentage_threshold]"
                             value="<?php echo esc_attr(intval($disk_config['warning_percentage_threshold'])); ?>"
                             class="semonto_serverload"
                         />
@@ -52,7 +52,7 @@
                             type="number"
                             min="0"
                             max="100"
-                            name="semonto_disk_space_inode_config[<?php echo $disk_name; ?>][error_percentage_threshold]"
+                            name="semonto_config_disk_space_inode[<?php echo $disk_name; ?>][error_percentage_threshold]"
                             value="<?php echo esc_attr(intval($disk_config['error_percentage_threshold'])); ?>"
                             class="semonto_serverload"
                         />
