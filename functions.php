@@ -154,6 +154,11 @@ function semonto_generate_config() {
 
 // generates an array with the enabled tests 
 function semonto_generate_tests_config() {
+
+    // TODO: Can still be disabled for security reasons.
+    $exec_available = function_exists('exec');
+    $shell_exec_available = function_exists('shell_exec');
+
     $config = [];
 
     if (get_option('semonto_enable_now_test')) {
@@ -204,7 +209,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if (get_option('semonto_memory_usage_enable')) {
+    if ($exec_available && get_option('semonto_memory_usage_enable')) {
         $config[] = [
             'test' => 'MemoryUsage',
             'config' => [
@@ -214,7 +219,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if (get_option('semonto_disk_space_enable')) {
+    if ($shell_exec_available && get_option('semonto_disk_space_enable')) {
         $test_config = [
             'test' => 'DiskSpace',
             'config' => [
@@ -236,7 +241,7 @@ function semonto_generate_tests_config() {
         $config[] = $test_config;
     }
 
-    if (get_option('semonto_disk_space_inode_enable')) {
+    if ($exec_available && get_option('semonto_disk_space_inode_enable')) {
         $test_config = [
             'test' => 'DiskSpaceInode',
             'config' => [
