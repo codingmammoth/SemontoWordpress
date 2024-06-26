@@ -64,6 +64,7 @@ class SemontoHealthMonitor {
         // Non-diskspace tests
         const warningField = this.formElement.querySelector('input[name="semonto_warning_threshold_' + test + '"]')
         const errorField = this.formElement.querySelector('input[name="semonto_error_threshold_' + test + '"]')
+
         this.toggleInputFields(target, warningField, errorField)
         this.checkThresholds(warningField, errorField)
       } else if (test && targetName.startsWith('semonto_config_disk_space') || targetName.startsWith('semonto_config_disk_space_inode')) {
@@ -101,6 +102,7 @@ class SemontoHealthMonitor {
       if (test && (targetName.startsWith('semonto_warning_threshold_') || targetName.startsWith('semonto_error_threshold_')) && this.tests.includes(test)) {
         const warningField = this.formElement.querySelector('input[name="semonto_warning_threshold_' + test + '"]')
         const errorField = this.formElement.querySelector('input[name="semonto_error_threshold_' + test + '"]')
+
         this.checkThresholds(warningField, errorField)
       } else if (test && targetName.startsWith('semonto_config_disk_space') || targetName.startsWith('semonto_config_disk_space_inode')) {
         const baseName = targetName.replace('[warning_percentage_threshold]', '').replace('[error_percentage_threshold]', '')
@@ -108,6 +110,7 @@ class SemontoHealthMonitor {
         const errorSelector = 'input[name="' + baseName + '[error_percentage_threshold]' + '"]'
         const warningField = this.formElement.querySelector(warningSelector)
         const errorField = this.formElement.querySelector(errorSelector)
+
         this.checkThresholds(warningField, errorField)
       }
     }
@@ -145,6 +148,14 @@ class SemontoHealthMonitor {
     })
   }
 
+  handleSubmit (event) {
+    event.preventDefault()
+
+    // TODO: Add validation.
+
+    this.formElement.submit()
+  }
+
   constructor () {
     this.formElement = document.querySelector('.semonto-health-monitor__form')
 
@@ -156,6 +167,9 @@ class SemontoHealthMonitor {
       // this.initializeDiskSpaceTests()
 
       // Prevent submit
+      this.formElement.addEventListener('submit', (event) => {
+        this.handleSubmit(event)
+      })
     }
   }
 }
