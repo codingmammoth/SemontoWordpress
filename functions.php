@@ -117,15 +117,15 @@ function semonto_health_monitor_save_settings() {
     ]);
 
     // DiskSpace
-    register_setting('semonto_health_monitor_settings', "semonto_disk_space_enable");
-    register_setting('semonto_health_monitor_settings', "semonto_disk_space_config", [
+    register_setting('semonto_health_monitor_settings', "semonto_enable_disk_space_test");
+    register_setting('semonto_health_monitor_settings', "semonto_config_disk_space", [
         'type' => 'object',
-        'sanitize_callback' => 'semonto_sanitize_disk_space_config'
+        'sanitize_callback' => 'semonto_sanitize_disk_space_inode_config'
     ]);
 
     // DiskSpaceInode
-    register_setting('semonto_health_monitor_settings', "semonto_disk_space_inode_enable");
-    register_setting('semonto_health_monitor_settings', "semonto_disk_space_inode_config", [
+    register_setting('semonto_health_monitor_settings', "semonto_enable_disk_space_inode_test");
+    register_setting('semonto_health_monitor_settings', "semonto_config_disk_space_inode", [
         'type' => 'object',
         'sanitize_callback' => 'semonto_sanitize_disk_space_inode_config'
     ]);
@@ -216,7 +216,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if ($shell_exec_available && get_option('semonto_disk_space_enable')) {
+    if ($shell_exec_available && get_option('semonto_enable_disk_space_test')) {
         $test_config = [
             'test' => 'DiskSpace',
             'config' => [
@@ -224,7 +224,7 @@ function semonto_generate_tests_config() {
             ]
         ];
 
-        $configured_disks = get_option('semonto_disk_space_config');
+        $configured_disks = get_option('semonto_config_disk_space');
         foreach ($configured_disks as $configured_disk => $disk_config) {
             if (isset($disk_config['enabled']) && (int) $disk_config['enabled']) {
                 $test_config['config']['disks'][] = [
@@ -238,7 +238,7 @@ function semonto_generate_tests_config() {
         $config[] = $test_config;
     }
 
-    if ($exec_available && get_option('semonto_disk_space_inode_enable')) {
+    if ($exec_available && get_option('semonto_enable_disk_space_inode_test')) {
         $test_config = [
             'test' => 'DiskSpaceInode',
             'config' => [
@@ -246,7 +246,7 @@ function semonto_generate_tests_config() {
             ]
         ];
 
-        $configured_disks = get_option('semonto_disk_space_inode_config');
+        $configured_disks = get_option('semonto_config_disk_space_inode');
         foreach ($configured_disks as $configured_disk => $disk_config) {
             if (isset($disk_config['enabled']) && (int) $disk_config['enabled']) {
                 $test_config['config']['disks'][] = [
@@ -379,7 +379,7 @@ function semonto_get_disk_space_config ()
     $disk_space_config = semonto_get_available_disks();
     $available_disks = array_keys($disk_space_config);
 
-    $configured_disks = get_option('semonto_disk_space_config');
+    $configured_disks = get_option('semonto_config_disk_space');
     foreach ($configured_disks as $disk_name => $disk_config) {
         if (in_array($disk_name, $available_disks)) {
             $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
@@ -394,7 +394,7 @@ function semonto_get_disk_space_inode_config ()
     $disk_space_config = semonto_get_available_disks();
     $available_disks = array_keys($disk_space_config);
 
-    $configured_disks = get_option('semonto_disk_space_inode_config');
+    $configured_disks = get_option('semonto_config_disk_space_inode');
     foreach ($configured_disks as $disk_name => $disk_config) {
         if (in_array($disk_name, $available_disks)) {
             $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
@@ -433,12 +433,12 @@ function semonto_sanitize_disk_config($setting, $new_settings)
 
 function semonto_sanitize_disk_space_config($new_value)
 {
-    return semonto_sanitize_disk_config('semonto_disk_space_config', $new_value);
+    return semonto_sanitize_disk_config('semonto_config_disk_space', $new_value);
 }
 
 function semonto_sanitize_disk_space_inode_config($new_value)
 {
-    return semonto_sanitize_disk_config('semonto_disk_space_inode_config', $new_value);
+    return semonto_sanitize_disk_config('semonto_config_disk_space_inode', $new_value);
 }
 
 function semonto_sanitize_load_test_threshold($setting, $new_value)
