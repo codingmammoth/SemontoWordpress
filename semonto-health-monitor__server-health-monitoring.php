@@ -23,7 +23,7 @@
         </a>
     </p>
 
-    <form method="post" action="options.php">
+    <form class="semonto-health-monitor__form" method="post" action="options.php">
 
         <?php
             settings_fields('semonto_health_monitor_settings');
