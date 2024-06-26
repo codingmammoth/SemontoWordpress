@@ -23,18 +23,18 @@
             </div>
             <input 
                 type="number" 
-                min="1" 
-                max="100" 
+                min="0"
+                step="0.01"
                 name="semonto_warning_threshold_now" 
-                value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_now', 5))); ?>" 
+                value="<?php echo esc_attr(get_option('semonto_warning_threshold_now', 5)); ?>" 
                 class="semonto_serverload" 
             />
             <input 
                 type="number" 
-                min="1" 
-                max="100" 
+                min="0"
+                step="0.01"
                 name="semonto_error_threshold_now" 
-                value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_now', 15))); ?>" 
+                value="<?php echo esc_attr(get_option('semonto_error_threshold_now', 15)); ?>" 
                 class="semonto_serverload" 
             />
         </div>
@@ -56,18 +56,18 @@
             </div>
             <input 
                 type="number" 
-                min="1" 
-                max="100" 
+                min="0"
+                step="0.01"
                 name="semonto_warning_threshold_5m" 
-                value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_5m', 5))); ?>" 
+                value="<?php echo esc_attr(get_option('semonto_warning_threshold_5m', 5)); ?>" 
                 class="semonto_serverload" 
             />
             <input 
                 type="number" 
-                min="1" 
-                max="100" 
+                min="0"
+                step="0.01"
                 name="semonto_error_threshold_5m" 
-                value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_5m', 15))); ?>" 
+                value="<?php echo esc_attr(get_option('semonto_error_threshold_5m', 15)); ?>" 
                 class="semonto_serverload" 
             />
         </div>
@@ -89,18 +89,18 @@
             </div>
             <input 
                 type="number" 
-                min="0" 
-                max="100" 
+                min="0"
+                step="0.01"
                 name="semonto_warning_threshold_15m" 
-                value="<?php echo esc_attr(intval(get_option('semonto_warning_threshold_15m', 5))); ?>" 
+                value="<?php echo esc_attr(get_option('semonto_warning_threshold_15m', 5)); ?>" 
                 class="semonto_serverload" 
             />
             <input 
                 type="number" 
-                min="0" 
-                max="100" 
+                min="0"
+                step="0.01"
                 name="semonto_error_threshold_15m" 
-                value="<?php echo esc_attr(intval(get_option('semonto_error_threshold_15m', 15))); ?>" 
+                value="<?php echo esc_attr(get_option('semonto_error_threshold_15m', 15)); ?>" 
                 class="semonto_serverload" 
             />
         </div>
