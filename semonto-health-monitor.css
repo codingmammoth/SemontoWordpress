@@ -1,6 +1,121 @@
+.semonto-health-monitor {
+  max-width: calc(100% - 10px);
+}
+
+@media only screen and (min-width: 782px) {
+  .semonto-health-monitor {
+    max-width: calc(100% - 20px);
+  }
+}
+
+.semonto-health-monitor__body {
+  background-color: #fff;
+  border-left: 1px solid #c3c4c7;
+  border-right: 1px solid #c3c4c7;
+  border-bottom: 1px solid #c3c4c7;
+  padding: 1em;
+}
+
+.semonto-health-monitor__title {
+  font-size: 1.5em;
+}
+
+/*
+ * Tabs
+ */
+.semonto-health-monitor__tabs {
+  display: flex;
+  border-bottom: 1px solid #c3c4c7;
+  background-color: #f4f4f4;
+}
+
+.semonto-health-monitor__tab {
+  padding: .5rem 1rem 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: inherit;
+}
+
+.semonto-health-monitor__tab.active {
+  box-shadow: 0 1px #fff;
+  background-color: #fff;
+  border-top: 1px solid #c3c4c7;
+  border-right: 1px solid #c3c4c7;
+  border-left: 1px solid #c3c4c7;
+}
+
+.semonto-health-monitor__tab:not(.active):hover {
+  color: inherit;
+  background-color: #e5e5e5 !important;
+}
+
+/*
+ * Hero section
+ */
+.semonto-health-monitor__hero-banner {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5em;
+}
+
+.semonto-health-monitor__hero-icon-wrapper {
+  margin-right: 1em;
+}
+
+.semonto-health-monitor__hero-icon {
+  width: 3em;
+  height: 3em;
+  border-radius: 0.25em;
+}
+
+.semonto-health-monitor__hero-content {
+  margin-bottom: 1.5em;
+}
+
+.semonto-health-monitor__hero-image {
+  box-shadow: rgba(0, 0, 0, 0.15) 0 0.5em 1em 0;
+  max-width: 100%;
+}
+
+.semonto-health-monitor__hero-content-list {
+  list-style-type: disc;
+  padding-left: 1.5em;
+  margin-bottom: 1em;
+}
+
+@media screen and (min-width: 782px) {
+
+  .semonto-health-monitor__hero-content-wrapper {
+    display: flex;
+  }
+
+  .semonto-health-monitor__hero-content {
+    margin-bottom: 0;
+    display: flex;
+    margin-right: 3em;
+    max-width: 50%;
+  }
+
+  .semonto-health-monitor__hero-image-wrapper {
+    display: flex;
+    justify-content: center;
+  }
+
+  .semonto-health-monitor__hero-image {
+    max-width: 400px;
+  }
+}
+
+
+
+
+
+
+
+
 .semonto-health-monitor p {
   margin: 0px;
-  font-size: 15px;
+  /* font-size: 15px; */
 }
 
 .semonto-health-monitor u {
@@ -13,22 +128,19 @@
 }
 
 .semonto-health-monitor a {
-  text-decoration: none;
+  /* text-decoration: none; */
 }
 
-.semonto-health-monitor .titles {
+/* .semonto-health-monitor .titles {
   margin-bottom: 17px;
   margin-top: 17px;
-}
+} */
 
 .semonto-health-monitor #create-account {
   color: white;
 }
 
-.semonto-health-monitor {
-  margin: 0px;
-  padding-right: 10px;
-}
+
 
 .semonto-health-monitor #semontoimg {
   height: 50px;
@@ -36,7 +148,7 @@
 }
 
 .semonto-health-monitor a {
-  color: black;
+  /* color: black; */
 }
 
 .semonto-health-monito #infotext {
@@ -91,8 +203,8 @@
 }
 
 .semonto-health-monitor .semontosetting {
-  margin-top: 20px;
-  display: flex;
+  /* margin-top: 20px; */
+  /* display: flex; */
 }
 
 .semonto-health-monitor .title-test {
@@ -308,3 +420,39 @@
   font-size: 1em !important;
   font-weight: 600;
 }
+
+@media only screen and (min-width: 600px) {
+  .semonto-health-monitor .input-tests {
+    width: 470px;
+  }
+
+  .semonto-health-monitor #secret-key {
+    width: 470px;
+  }
+
+  .semonto-health-monitor .instal-succes-message {
+    font-size: 17px;
+    width: auto;
+    max-width: 500px;
+  }
+
+  .semonto-health-monitor .semonto_serverload {
+    width: 25%;
+  }
+
+  .semonto-health-monitor .warning-error {
+    text-align: center;
+  }
+
+  .semonto-health-monitor .warning {
+    font-size: 13px;
+    width: auto;
+    margin-bottom: 10px;
+  }
+
+  .semonto-health-monitor .one {
+    margin-right: 4px;
+  }
+}
+
+

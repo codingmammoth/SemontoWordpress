@@ -21,57 +21,54 @@ function semonto_health_monitor_settings_page() {
         $current_tab = isset( $_GET['semonto_tab'] ) ? $_GET['semonto_tab'] : 'semonto';
     ?>
 
-        <nav>
-            <a 
-                class="<?php $current_tab == 'semonto' ? 'active' : '' ; ?>" 
-                href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'semonto' ) )?>"
-            >
-                Semonto
-            </a>
-            <a 
-                class="<?php $current_tab == 'website_monitoring' ? 'active' : '' ; ?>" 
-                href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'website_monitoring' ) )?>"
-            >
-                Website Monitoring
-            </a>
-            <a
-                class="<?php $current_tab == 'server_health_monitoring' ? 'active' : '' ; ?>" 
-                href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'server_health_monitoring' ) )?>"
-            >
-                Server Health Monitoring
-            </a>
-        </nav>
+        <?php
+            $activation_message_shown = get_option('semonto_activation_message_shown', false);
+            if (!$activation_message_shown) {
+                ?>
+                <div class="instal-succes-message">Good job! The Semonto plugin has been activated.</div>
+                <?php
+                update_option('semonto_activation_message_shown', true);
+            }
+        ?>
 
         <div class="semonto-health-monitor">
 
-            <?php
-                $activation_message_shown = get_option('semonto_activation_message_shown', false);
-                if (!$activation_message_shown) {
-                    ?>
-                    <div class="instal-succes-message">Good job! The Semonto plugin has been activated.</div>
-                    <?php
-                    update_option('semonto_activation_message_shown', true);
-                }
-            ?>
-
             <div class="semontosetting">
-                <h1 class="titles">Semonto Health Monitor Settings</h1>
+                <h1 class="semonto-health-monitor__title">Semonto Health Monitor</h1>
             </div>
 
-            <div class="semontolink">
-                <div id="semontotext">To get the status of your website, please go to</div>
-                <a id="semontobutton" href="https://supervisor.semonto.com/" target="_blank" >semonto.com</a>
-            </div>
+            <nav class="semonto-health-monitor__tabs">
+                <a 
+                    class="semonto-health-monitor__tab <?php echo $current_tab == 'semonto' ? 'active' : '' ; ?>" 
+                    href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'semonto' ) )?>"
+                >
+                    Semonto
+                </a>
+                <a 
+                    class="semonto-health-monitor__tab <?php echo $current_tab == 'website_monitoring' ? 'active' : '' ; ?>" 
+                    href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'website_monitoring' ) )?>"
+                >
+                    Website Monitoring
+                </a>
+                <a
+                    class="semonto-health-monitor__tab <?php echo $current_tab == 'server_health_monitoring' ? 'active' : '' ; ?>" 
+                    href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'server_health_monitoring' ) )?>"
+                >
+                    Server Health Monitoring
+                </a>
+            </nav>
 
-            <?php
-                if ($current_tab == 'website_monitoring') {
-                    include 'semonto-health-monitor__website-monitoring.php';
-                } else if ($current_tab == 'server_health_monitoring') {
-                    include 'semonto-health-monitor__server-health-monitoring.php';
-                } else {
-                    include 'semonto-health-monitor__semonto.php';
-                }
-            ?>
+            <div class="semonto-health-monitor__body">
+                <?php
+                    if ($current_tab == 'website_monitoring') {
+                        include 'semonto-health-monitor__website-monitoring.php';
+                    } else if ($current_tab == 'server_health_monitoring') {
+                        include 'semonto-health-monitor__server-health-monitoring.php';
+                    } else {
+                        include 'semonto-health-monitor__semonto.php';
+                    }
+                ?>
+            </div>
 
         </div>
 

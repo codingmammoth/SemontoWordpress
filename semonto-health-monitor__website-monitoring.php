@@ -1,25 +1,73 @@
-<div>
-    <h2>Website monitoring</h2>
-    <p>
-        Semonto will notify you if something is wrong with your website: uptime, ssl, etc
-        <br>
-        To start monitoring this website:
-    </p>
-    <ol>
-        <li>Go to semonto.com</li>
-        <li>Add a new website</li>
-        <li>Enter the url of your website and save</li>
-    </ol>
-    <p>
-        Semonto will start monitoring your website and notify you if any issues are found.
-    </p>
-    <p>
-        Read more about how you can
-        <a 
-            href="https://semonto.com/how-to/how-to-monitor-your-website" 
-            target="_blank"
-        >
-            <u>configure the settings.</u>
-        </a>
-    </p>
+<div class="semonto-health-monitor__hero">
+
+    <div class="semonto-health-monitor__hero-banner">
+        <div class="semonto-health-monitor__hero-icon-wrapper">
+            <img 
+                class="semonto-health-monitor__hero-icon" 
+                width="32" 
+                height="32" 
+                src="<?php echo esc_url(plugins_url( 'images/semonto-logo.png', __FILE__ )) ?>" 
+            />
+        </div>
+        <div>
+            <p>
+                If you enable website monitoring, Semonto will notify you when something is
+                wrong with your website.
+            </p>
+        </div>
+    </div>
+
+    <div class="semonto-health-monitor__hero-content-wrapper">
+        <div class="semonto-health-monitor__hero-content">
+            <div>
+                <h2>What semonto will monitor</h2>
+                <ul class="semonto-health-monitor__hero-content-list">
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/uptime-report">Uptime</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/broken-link-monitoring">Broken links</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/https-certificate-monitoring">SSL</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/mixed-content-monitoring">Mixed content</a>
+                    </li>
+                    <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/domain-monitoring">Domain expiration</a>
+                    </li>
+                </ul>
+
+                <h2>In semonto you can</h2>
+                <ul class="semonto-health-monitor__hero-content-list">
+                    <li>Add multiple websites</li>
+                    <li>Choose how you want to get notified</li>
+                    <li>See the current status of your website</li>
+                    <li>Download reports</li>
+                    <li>Add team members</li>
+                </ul>
+
+                <a 
+                    class="semonto-health-monitor__cta-button button button-primary" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    href="https://semonto.com/"
+                >Go to semonto</a>
+
+            </div>
+        </div>
+
+        <div class="semonto-health-monitor__hero-image-wrapper">
+            <div>
+                <img 
+                    class="semonto-health-monitor__hero-image" 
+                    src="<?php echo esc_url(plugins_url( 'images/semonto-website-dashboard.png', __FILE__ )) ?>" 
+                    alt="Semonto" 
+                />
+            </div>
+        </div>
+
+    </div>
+
 </div>
