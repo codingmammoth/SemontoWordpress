@@ -277,8 +277,9 @@
   margin: 0px;
 }
 
-.semonto-health-monitor .is-invalid,
-.semonto-health-monitor .is-invalid:focus {
+.semonto-health-monitor input.is-invalid,
+.semonto-health-monitor input.is-invalid:focus,
+.semonto-health-monitor input:invalid {
   border: 2px solid #d63638;
   box-shadow: 0 0 0 1px #d63638;
 }
