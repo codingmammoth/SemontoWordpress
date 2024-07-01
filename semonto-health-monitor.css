@@ -26,10 +26,10 @@
 .semonto-health-monitor__tabs {
   display: flex;
   border-bottom: 1px solid #c3c4c7;
-  background-color: #f4f4f4;
 }
 
 .semonto-health-monitor__tab {
+  background-color: #d8d8d8;
   padding: .5rem 1rem 1rem;
   font-weight: 600;
   text-decoration: none;
