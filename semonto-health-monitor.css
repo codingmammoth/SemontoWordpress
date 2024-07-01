@@ -293,84 +293,35 @@
   text-align: right;
 }
 
-
-
-/* TODO */
-
-
-
-
-.semonto-health-monitor .instal-succes-message {
-  color: #3c434a;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-size: 15px;
-  margin-top: 15px;
-  padding: 15px;
-  color: green;
-  line-height: 1.3em;
-  background-color: rgb(229, 252, 229);
-}
-
-.semonto-health-monitor .close-button {
-  width: 15px;
-  font-size: 18px;
-  cursor: pointer;
-  float: right;
-  /* Add this line to position the close button to the right */
-}
-
-.semonto-health-monitor #secret-key {
-  width: 100%;
-}
-
-.semonto-health-monitor .tests {
-  margin-bottom: 20px;
-}
-
-@media only screen and (min-width: 600px) {
-  .semonto-health-monitor #secret-key {
-    width: 470px;
-  }
-
-  .semonto-health-monitor .instal-succes-message {
-    font-size: 17px;
-    width: auto;
-    max-width: 500px;
-  }
-}
-
-
-
-
-
-.semonto-health-monitor #execerror {
-  color: #e20c0c
-}
-
-.semonto-health-monitor .load {
-  margin-right: 6%;
-}
-
-.semonto-health-monitor .test-field {
-  width: 470px;
-  border-top: 1px solid rgb(171, 171, 171);
-}
-
+/*
+ * Info message.
+ */
 .semonto-health-monitor__not-available {
   color: #2271b1;
-  background-color: #dae0e5;
+  background-color: #edf4f9;
   border: 1px solid #2271b1;
   border-radius: 0.25em;
   margin-top: 1em !important;
-  padding: .5em;
+  padding: 1em;
   font-size: 1em !important;
   font-weight: 600;
 }
 
-@media only screen and (min-width: 600px) {
-  .semonto-health-monitor .instal-succes-message {
-    font-size: 17px;
-    width: auto;
-    max-width: 500px;
-  }
+.semonto-health-monitor__secret-key {
+  width: 100%;
+}
+
+.semonto-health-monitor__form {
+  margin-top: 3em;
+}
+
+.semonto-health-monitor__install-message {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  border: 1px solid #0c7f29;
+  color: #0c7f29;
+  background-color: #eaf7ee;
+  padding: 1em;
+  border-radius: 0.25em;
+  font-weight: 600;
 }
