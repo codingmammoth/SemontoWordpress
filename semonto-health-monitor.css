@@ -58,6 +58,11 @@
   margin-bottom: 1.5em;
 }
 
+.semonto-health-monitor__hero-banner p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
 .semonto-health-monitor__hero-icon-wrapper {
   margin-right: 1em;
 }
@@ -106,72 +111,108 @@
   }
 }
 
-
-
-
-
-
-
-
-.semonto-health-monitor p {
-  margin: 0px;
-  /* font-size: 15px; */
+/*
+ * Tests.
+ */
+.semonto-health-monitor__test-container {
+  max-width: 470px;
 }
 
-.semonto-health-monitor u {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
-  font-size: 15px;
+.semonto-health-monitor__test-container * {
+  box-sizing: border-box !important;
 }
 
-.semonto-health-monitor h2 {
-  font-size: 20px;
+.semonto-health-monitor__test-container:last-child {
+  margin-top: 3em !important;
 }
 
-.semonto-health-monitor a {
-  /* text-decoration: none; */
+.semonto-health-monitor__test-divider {
+  max-width: 470px;
+  margin-top: 3em;
+  margin-bottom: 3em;
+  margin-left: 0;
+  margin-right: auto;
+  height: 1px;
+  background-color: #c3c4c7;
+  border: none !important;
 }
 
-/* .semonto-health-monitor .titles {
-  margin-bottom: 17px;
-  margin-top: 17px;
-} */
+.semonto-health-monitor__test-thresholds {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1em;
+}
 
-.semonto-health-monitor #create-account {
-  color: white;
+.semonto-health-monitor__test-thresholds .semonto-health-monitor__test-threshold:nth-child(1) {
+  margin-right: 0.25em;
+}
+
+.semonto-health-monitor__test-thresholds .semonto-health-monitor__test-threshold:nth-child(2) {
+  margin-left: 0.25em;
+}
+
+.semonto-health-monitor__test .semonto-health-monitor__test-threshold:nth-child(2) {
+  margin-right: 0.25em;
+}
+
+.semonto-health-monitor__test .semonto-health-monitor__test-threshold:nth-child(3) {
+  margin-left: 0.25em;
+}
+
+.semonto-health-monitor__test-threshold {
+  width: 20%;
+  text-align: center;
+}
+
+.semonto-health-monitor__test {
+  display: flex;
+  margin-bottom: 0.5em;
+}
+
+@media only screen and (min-width: 782px) {
+  .semonto-health-monitor__test-threshold {
+    width: 25%;
+  }
+}
+
+ /*
+  * Switches
+  */
+.semonto-health-monitor__switch-container {
+  flex-basis: 60%;
+  display: flex;
+  align-items: center;
+  padding-right: 0.5em;
+  flex-shrink: 0;
+}
+
+.semonto-health-monitor__switch-label {
+  flex-grow: 1;
+  text-align: right;
+  padding-right: 0.5em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.semonto-health-monitor__primary-button {
+  width: 100%;
+  text-align: center;
+}
+
+@media only screen and (min-width: 782px) {
+  .semonto-health-monitor__switch-container {
+    flex-basis: 50%;
+  }
 }
 
 
 
-.semonto-health-monitor #semontoimg {
-  height: 50px;
-  margin-left: 10px;
-}
 
-.semonto-health-monitor a {
-  /* color: black; */
-}
 
-.semonto-health-monito #infotext {
-  font-size: 18px;
-  text-wrap: no-wrap;
-  margin: 0px;
-  max-width: 500px;
-  list-style-type: disc;
-}
 
-.semonto-health-monitor .input-button {
-  cursor: pointer;
-  width: auto;
-  background-color: #007FFF;
-  height: 40px;
-  color: white;
-  border: none;
-  border-radius: 5px;
-}
 
-.semonto-health-monitor .overall {
-  width: 200px;
-}
+
 
 .semonto-health-monitor input {
   margin: 0px;
@@ -193,42 +234,9 @@
   font-size: 15px;
 }
 
-.semonto-health-monitor .input-fields {
-  margin-bottom: 12px;
-}
-
-.semonto-health-monitor .input-fields-text {
-  display: flex;
-  height: 40px;
-}
-
-.semonto-health-monitor .semontosetting {
-  /* margin-top: 20px; */
-  /* display: flex; */
-}
-
-.semonto-health-monitor .title-test {
-  display: block;
-  margin-top: auto;
-  margin-bottom: auto;
-  font-size: 14px;
-  width: 40%;
-}
-
-.semonto-health-monitor .semonto_serverload {
-  margin-left: 10px;
-  border: 1px solid grey;
-  width: 20%;
-}
-
-.semonto-health-monitor .warning {
-  font-size: 13px;
-  width: 20%;
-}
-
-.semonto-health-monitor .switch-option {
+/* .semonto-health-monitor .switch-option {
   padding: 5px;
-}
+} */
 
 .semonto-health-monitor .switch {
   position: relative;
@@ -318,16 +326,7 @@
   margin-bottom: 20px;
 }
 
-.semonto-health-monitor .input-tests {
-  border-top: 1px solid rgb(171, 171, 171);
-  margin-bottom: 50px;
-}
-
 @media only screen and (min-width: 600px) {
-  .semonto-health-monitor .input-tests {
-    width: 470px;
-  }
-
   .semonto-health-monitor #secret-key {
     width: 470px;
   }
@@ -337,32 +336,9 @@
     width: auto;
     max-width: 500px;
   }
-
-  .semonto-health-monitor .semonto_serverload {
-    width: 25%;
-  }
-
-  .semonto-health-monitor .warning-error {
-    text-align: center;
-  }
-
-  .semonto-health-monitor .warning {
-    font-size: 13px;
-    width: auto;
-    margin-bottom: 10px;
-  }
-
-  .semonto-health-monitor .one {
-    margin-right: 4px;
-  }
 }
 
-.semonto-health-monitor .warning-error {
-  font-size: 15px;
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-}
+
 
 .semonto-health-monitor .error-input {
   border: 1px solid red;
@@ -422,10 +398,6 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .semonto-health-monitor .input-tests {
-    width: 470px;
-  }
-
   .semonto-health-monitor #secret-key {
     width: 470px;
   }
@@ -434,24 +406,6 @@
     font-size: 17px;
     width: auto;
     max-width: 500px;
-  }
-
-  .semonto-health-monitor .semonto_serverload {
-    width: 25%;
-  }
-
-  .semonto-health-monitor .warning-error {
-    text-align: center;
-  }
-
-  .semonto-health-monitor .warning {
-    font-size: 13px;
-    width: auto;
-    margin-bottom: 10px;
-  }
-
-  .semonto-health-monitor .one {
-    margin-right: 4px;
   }
 }
 

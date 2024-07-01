@@ -33,9 +33,7 @@ function semonto_health_monitor_settings_page() {
 
         <div class="semonto-health-monitor">
 
-            <div class="semontosetting">
-                <h1 class="semonto-health-monitor__title">Semonto Health Monitor</h1>
-            </div>
+            <h1 class="semonto-health-monitor__title">Semonto Health Monitor</h1>
 
             <nav class="semonto-health-monitor__tabs">
                 <a 

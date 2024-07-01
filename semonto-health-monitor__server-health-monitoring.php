@@ -81,23 +81,42 @@
                 </p>
             </div>
 
+            <hr class="semonto-health-monitor__test-divider">
+
             <?php include 'semonto-health-monitor__server-load.php'; ?>
+
+            <hr class="semonto-health-monitor__test-divider">
 
             <?php include 'semonto-health-monitor__memory-usage.php'; ?>
 
+            <hr class="semonto-health-monitor__test-divider">
+
             <?php include 'semonto-health-monitor__disk-space.php'; ?>
+
+            <hr class="semonto-health-monitor__test-divider">
 
             <?php include 'semonto-health-monitor__disk-space-inode.php'; ?>
 
+            <hr class="semonto-health-monitor__test-divider">
+
             <?php include 'semonto-health-monitor__database.php'; ?>
+
+            <hr class="semonto-health-monitor__test-divider">
 
             <?php include 'semonto-health-monitor__secret-key.php'; ?>
 
-            <?php include 'semonto-health-monitor__caching.php'; ?>
+            <!-- <hr class="semonto-health-monitor__test-divider"> -->
+
+            <?php // include 'semonto-health-monitor__caching.php'; ?>
 
         </div>
 
-        <button type="submit" class="input-button overall">Save changes</button>
+        <div class="semonto-health-monitor__test-container">
+            <button 
+                type="submit" 
+                class="semonto-health-monitor__primary-button button button-primary"
+            >Save changes</button>
+        </div>
 
     </form>
 

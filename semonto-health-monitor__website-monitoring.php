@@ -49,7 +49,7 @@
                 </ul>
 
                 <a 
-                    class="semonto-health-monitor__cta-button button button-primary" 
+                    class="semonto-health-monitor__primary-button button button-primary" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     href="https://semonto.com/"

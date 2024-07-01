@@ -8,7 +8,7 @@ class SemontoHealthMonitor {
     const warning = parseInt(warningField.value) || 0
     const error = parseInt(errorField.value) || 0
 
-    const inputFieldsDiv = warningField.closest('.input-fields')
+    const inputFieldsDiv = warningField.closest('.semonto-health-monitor__test').parentElement
     const errorMessageDiv = inputFieldsDiv.querySelector('.error-message')
 
     if (warning >= error) {
