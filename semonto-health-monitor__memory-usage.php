@@ -15,13 +15,13 @@
                 <div class="semonto-health-monitor__switch-container">
                     <p class="semonto-health-monitor__switch-label">Memory usage:</p>
                     <div class="switch-option">
-                        <label class="switch">
+                        <label class="semonto-health-monitor__test-switch">
                             <input
                                 type="checkbox"
                                 name="semonto_enable_memory_usage_test"
                                 value="1" <?php checked(1, get_option('semonto_enable_memory_usage_test')); ?>
                             />
-                            <span class="slider round"></span>
+                            <span class="semonto-health-monitor__test-switch-slider"></span>
                         </label>
                     </div>
                 </div>

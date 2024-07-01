@@ -11,13 +11,13 @@
             <div class="semonto-health-monitor__switch-container">
                 <p class="semonto-health-monitor__switch-label">Disk space</p>
                 <div class="switch-option">
-                    <label class="switch">
+                    <label class="semonto-health-monitor__test-switch">
                         <input
                         type="checkbox"
                         name="semonto_enable_disk_space_test"
                         value="1" <?php checked(1, get_option('semonto_enable_disk_space_test')); ?>
                         />
-                        <span class="slider round"></span>
+                        <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
                 </div>
             </div>
@@ -34,13 +34,13 @@
                     <div class="semonto-health-monitor__switch-container">
                         <p class="semonto-health-monitor__switch-label"><?php echo $disk_name; ?>:</p>
                         <div class="switch-option">
-                            <label class="switch">
+                            <label class="semonto-health-monitor__test-switch">
                                 <input
                                     type="checkbox"
                                     name="semonto_config_disk_space[<?php echo $disk_name; ?>][enabled]"
                                     value="1" <?php checked(1, $disk_config['enabled']); ?>
                                 />
-                                <span class="slider round"></span>
+                                <span class="semonto-health-monitor__test-switch-slider"></span>
                             </label>
                         </div>
                     </div>

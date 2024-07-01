@@ -14,14 +14,14 @@
             <div class="semonto-health-monitor__switch-container">
                 <p class="semonto-health-monitor__switch-label">Load now:</p>
                 <div class="switch-option">
-                    <label class="switch">
+                    <label class="semonto-health-monitor__test-switch">
                         <input 
                             type="checkbox" 
                             name="semonto_enable_now_test" 
                             value="1" 
                             <?php checked(1, get_option('semonto_enable_now_test')); ?> 
                         />
-                        <span class="slider round"></span>
+                        <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
                 </div>
             </div>
@@ -49,14 +49,14 @@
             <div class="semonto-health-monitor__switch-container">
                 <p class="semonto-health-monitor__switch-label">Load average 5 minutes:</p>
                 <div class="switch-option">
-                    <label class="switch">
+                    <label class="semonto-health-monitor__test-switch">
                         <input 
                             type="checkbox" 
                             name="semonto_enable_5m_test" 
-                            value="1" 
+                            value="1"
                             <?php checked(1, get_option('semonto_enable_5m_test')); ?> 
                         />
-                        <span class="slider round"></span>
+                        <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
                 </div>
             </div>
@@ -84,14 +84,14 @@
             <div class="semonto-health-monitor__switch-container">
                 <p class="semonto-health-monitor__switch-label"> Load average 15 minutes:</p>
                 <div class="switch-option">
-                    <label class="switch">
+                    <label class="semonto-health-monitor__test-switch">
                         <input 
                             type="checkbox" 
                             name="semonto_enable_15m_test" 
                             value="1" 
                             <?php checked(1, get_option('semonto_enable_15m_test')); ?> 
                         />
-                        <span class="slider round"></span>
+                        <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
                 </div>
             </div>
