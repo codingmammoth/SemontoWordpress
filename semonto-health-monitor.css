@@ -352,34 +352,6 @@
   border-top: 1px solid rgb(171, 171, 171);
 }
 
-#semontobutton {
-  background-color: #007FFF;
-  width: 120px;
-  color: white;
-  text-align: center;
-  height: 19px !important;
-  margin-top: auto;
-  margin-bottom: auto;
-  padding: 5px;
-  font-size: 15px;
-  border-radius: 5px;
-  font-weight: 600;
-  cursor: pointer;
-  margin-left: 8px;
-  text-decoration: none;
-}
-
-.semontolink {
-  display: flex;
-
-}
-
-#semontotext {
-  font-size: 15px;
-  margin-top: auto;
-  margin-bottom: auto;
-}
-
 .semonto-health-monitor__not-available {
   color: #2271b1;
   background-color: #dae0e5;
@@ -392,15 +364,9 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .semonto-health-monitor #secret-key {
-    width: 470px;
-  }
-
   .semonto-health-monitor .instal-succes-message {
     font-size: 17px;
     width: auto;
     max-width: 500px;
   }
 }
-
-
