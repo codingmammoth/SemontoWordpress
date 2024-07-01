@@ -22,15 +22,13 @@ class SemontoHealthMonitor {
       }
 
       [warningField, errorField].forEach(field => {
-        field.classList.add('error-input')
-        field.style.border = '2px solid red'
+        field.classList.add('is-invalid')
       })
     } else {
       if (errorMessageDiv) {
         errorMessageDiv.remove();
         [warningField, errorField].forEach(field => {
-          field.classList.remove('error-input')
-          field.style.border = '1px solid grey'
+          field.classList.remove('is-invalid')
         })
       }
     }

@@ -277,6 +277,12 @@
   margin: 0px;
 }
 
+.semonto-health-monitor .is-invalid,
+.semonto-health-monitor .is-invalid:focus {
+  border: 2px solid #d63638;
+  box-shadow: 0 0 0 1px #d63638;
+}
+
 /*
  * Errors
  */
@@ -334,10 +340,7 @@
 
 
 
-.semonto-health-monitor .error-input {
-  border: 1px solid red;
-  color: black;
-}
+
 
 .semonto-health-monitor #execerror {
   color: #e20c0c
