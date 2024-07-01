@@ -4,7 +4,7 @@
         If you want to add an extra layer of protection, copy the secret key from the
         monitor settings in Semonto. This will limit exposure of your health endpoint.
     </p>
-    <div class="options">
+    <div>
         <input 
             id="secret-key" 
             type="text" 
