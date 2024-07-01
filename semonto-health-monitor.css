@@ -132,9 +132,7 @@
   margin-bottom: 3em;
   margin-left: 0;
   margin-right: auto;
-  height: 1px;
-  background-color: #c3c4c7;
-  border: none !important;
+  border: .5px solid #c3c4c7;
 }
 
 .semonto-health-monitor__test-thresholds {
@@ -195,12 +193,18 @@
   margin-bottom: 0;
 }
 
+.semonto-health-monitor__switch-label:hover {
+  cursor: pointer;
+}
+
 .semonto-health-monitor__test-switch {
   position: relative;
   display: inline-block;
   margin: 0px;
   width: 2.4em;
   height: 1.2em;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 .semonto-health-monitor__test-switch input {

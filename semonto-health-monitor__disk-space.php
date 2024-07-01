@@ -9,13 +9,17 @@
     <?php if($shell_exec_available) : ?>
         <div class="semonto-health-monitor__test">
             <div class="semonto-health-monitor__switch-container">
-                <p class="semonto-health-monitor__switch-label">Disk space</p>
+                <label 
+                    for="semonto_enable_disk_space_test"
+                    class="semonto-health-monitor__switch-label"
+                >Disk space</label>
                 <div class="switch-option">
                     <label class="semonto-health-monitor__test-switch">
                         <input
-                        type="checkbox"
-                        name="semonto_enable_disk_space_test"
-                        value="1" <?php checked(1, get_option('semonto_enable_disk_space_test')); ?>
+                            type="checkbox"
+                            name="semonto_enable_disk_space_test"
+                            id="semonto_enable_disk_space_test"
+                            value="1" <?php checked(1, get_option('semonto_enable_disk_space_test')); ?>
                         />
                         <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
@@ -32,12 +36,16 @@
             <div class="">
                 <div class="semonto-health-monitor__test">
                     <div class="semonto-health-monitor__switch-container">
-                        <p class="semonto-health-monitor__switch-label"><?php echo $disk_name; ?>:</p>
+                        <label
+                            for="semonto_config_disk_space[<?php echo $disk_name; ?>][enabled]"
+                            class="semonto-health-monitor__switch-label"
+                        ><?php echo $disk_name; ?>:</label>
                         <div class="switch-option">
                             <label class="semonto-health-monitor__test-switch">
                                 <input
                                     type="checkbox"
                                     name="semonto_config_disk_space[<?php echo $disk_name; ?>][enabled]"
+                                    id="semonto_config_disk_space[<?php echo $disk_name; ?>][enabled]"
                                     value="1" <?php checked(1, $disk_config['enabled']); ?>
                                 />
                                 <span class="semonto-health-monitor__test-switch-slider"></span>

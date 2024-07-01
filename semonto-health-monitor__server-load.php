@@ -12,12 +12,16 @@
     <div class="">
         <div class="semonto-health-monitor__test">
             <div class="semonto-health-monitor__switch-container">
-                <p class="semonto-health-monitor__switch-label">Load now:</p>
+                <label 
+                    for="semonto_enable_now_test" 
+                    class="semonto-health-monitor__switch-label"
+                >Load now:</label>
                 <div class="switch-option">
                     <label class="semonto-health-monitor__test-switch">
                         <input 
                             type="checkbox" 
                             name="semonto_enable_now_test" 
+                            id="semonto_enable_now_test" 
                             value="1" 
                             <?php checked(1, get_option('semonto_enable_now_test')); ?> 
                         />
@@ -47,12 +51,16 @@
     <div class="">
         <div class="semonto-health-monitor__test">
             <div class="semonto-health-monitor__switch-container">
-                <p class="semonto-health-monitor__switch-label">Load average 5 minutes:</p>
+                <label
+                    for="semonto_enable_5m_test" 
+                    class="semonto-health-monitor__switch-label"
+                >Load average 5 minutes:</label>
                 <div class="switch-option">
                     <label class="semonto-health-monitor__test-switch">
                         <input 
                             type="checkbox" 
                             name="semonto_enable_5m_test" 
+                            id="semonto_enable_5m_test" 
                             value="1"
                             <?php checked(1, get_option('semonto_enable_5m_test')); ?> 
                         />
@@ -82,12 +90,16 @@
     <div class="">
         <div class="semonto-health-monitor__test">
             <div class="semonto-health-monitor__switch-container">
-                <p class="semonto-health-monitor__switch-label"> Load average 15 minutes:</p>
+                <label
+                    for="semonto_enable_15m_test" 
+                    class="semonto-health-monitor__switch-label"
+                >Load average 15 minutes:</label>
                 <div class="switch-option">
                     <label class="semonto-health-monitor__test-switch">
                         <input 
                             type="checkbox" 
                             name="semonto_enable_15m_test" 
+                            id="semonto_enable_15m_test" 
                             value="1" 
                             <?php checked(1, get_option('semonto_enable_15m_test')); ?> 
                         />
