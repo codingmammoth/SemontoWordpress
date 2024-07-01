@@ -12,11 +12,10 @@
     </p>
     <div>
         <input 
-            id="secret-key" 
             type="text" 
             name="semonto_secret_key" 
             value="<?php echo esc_attr(get_option('semonto_secret_key'),); ?>" 
-            class="input-field" 
+            class="semonto-health-monitor__secret-key" 
         />
     </div>
 </div>

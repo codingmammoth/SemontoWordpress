@@ -74,12 +74,9 @@
 
         <div class="form">
 
-            <div class="tests">
-                <br>
-                <p>
-                    If you want to use server health monitoring you can specify the tests below.
-                </p>
-            </div>
+            <p>
+                If you want to use server health monitoring you can specify the tests below.
+            </p>
 
             <hr class="semonto-health-monitor__test-divider">
 

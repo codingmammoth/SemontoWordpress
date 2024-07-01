@@ -21,17 +21,17 @@ function semonto_health_monitor_settings_page() {
         $current_tab = isset( $_GET['semonto_tab'] ) ? $_GET['semonto_tab'] : 'semonto';
     ?>
 
-        <?php
-            $activation_message_shown = get_option('semonto_activation_message_shown', false);
-            if (!$activation_message_shown) {
-                ?>
-                <div class="instal-succes-message">Good job! The Semonto plugin has been activated.</div>
-                <?php
-                update_option('semonto_activation_message_shown', true);
-            }
-        ?>
-
         <div class="semonto-health-monitor">
+ 
+            <?php
+                $activation_message_shown = get_option('semonto_activation_message_shown', false);
+                if (!$activation_message_shown) {
+                    ?>
+                    <div class="semonto-health-monitor__install-message">Good job! The Semonto plugin has been activated.</div>
+                    <?php
+                    update_option('semonto_activation_message_shown', true);
+                }
+            ?>
 
             <h1 class="semonto-health-monitor__title">Semonto Health Monitor</h1>
 
