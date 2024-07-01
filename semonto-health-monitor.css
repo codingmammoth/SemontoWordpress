@@ -238,11 +238,11 @@
 }
 
 .semonto-health-monitor__test-switch input:checked+.semonto-health-monitor__test-switch-slider {
-  background-color: #2196F3;
+  background-color: #2271b1;
 }
 
 .semonto-health-monitor__test-switch input:focus+.semonto-health-monitor__test-switch-slider {
-  box-shadow: 0 0 1px #2196F3;
+  box-shadow: 0 0 1px #2271b1;
 }
 
 .semonto-health-monitor input:checked+.semonto-health-monitor__test-switch-slider:before {
@@ -270,28 +270,28 @@
   text-align: center;
 }
 
-
-/* TODO */
-
+/*
+ * Input styles
+ */
 .semonto-health-monitor input {
   margin: 0px;
 }
 
-.semonto-health-monitor .error-messages {
-  color: red;
+/*
+ * Errors
+ */
+.semonto-health-monitor__error-message {
+  color: #d63638;
+  margin-bottom: 0.75em;
+  text-align: right;
 }
 
-.semonto-health-monitor .options {
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 40px;
-  display: flex;
-}
 
-.semonto-health-monitor button {
-  font-size: 15px;
-}
+
+/* TODO */
+
+
+
 
 .semonto-health-monitor .instal-succes-message {
   color: #3c434a;

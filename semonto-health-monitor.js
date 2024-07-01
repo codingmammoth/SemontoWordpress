@@ -9,16 +9,15 @@ class SemontoHealthMonitor {
     const error = parseInt(errorField.value) || 0
 
     const inputFieldsDiv = warningField.closest('.semonto-health-monitor__test').parentElement
-    const errorMessageDiv = inputFieldsDiv.querySelector('.error-message')
+    const errorMessageDiv = inputFieldsDiv.querySelector('.semonto-health-monitor__error-message')
 
     if (warning >= error) {
       this.errors = true
 
       if (!errorMessageDiv) {
         const errorMessage = document.createElement('div')
-        errorMessage.className = 'error-message'
+        errorMessage.className = 'semonto-health-monitor__error-message'
         errorMessage.textContent = 'Warning threshold should be less than the error threshold.'
-        errorMessage.style.fontSize = '12px'
         inputFieldsDiv.appendChild(errorMessage)
       }
 
