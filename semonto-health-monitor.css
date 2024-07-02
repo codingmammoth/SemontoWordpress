@@ -123,13 +123,13 @@
 }
 
 .semonto-health-monitor__test-container:last-child {
-  margin-top: 3em !important;
+  margin-bottom: 3em;
 }
 
 .semonto-health-monitor__test-divider {
   max-width: 470px;
-  margin-top: 3em;
-  margin-bottom: 3em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
   margin-left: 0;
   margin-right: auto;
   border: .5px solid #c3c4c7;
@@ -138,12 +138,12 @@
 .semonto-health-monitor__test-thresholds {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
   margin-bottom: 1em;
 }
 
 .semonto-health-monitor__test-thresholds .semonto-health-monitor__test-threshold:nth-child(1) {
   margin-right: 0.25em;
+  margin-left: 60%;
 }
 
 .semonto-health-monitor__test-thresholds .semonto-health-monitor__test-threshold:nth-child(2) {
@@ -169,6 +169,10 @@
 }
 
 @media only screen and (min-width: 782px) {
+  .semonto-health-monitor__test-thresholds .semonto-health-monitor__test-threshold:nth-child(1) {
+    margin-left: 50%;
+  }
+
   .semonto-health-monitor__test-threshold {
     width: 25%;
   }
