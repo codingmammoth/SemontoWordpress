@@ -23,7 +23,7 @@
                                 type="checkbox"
                                 name="semonto_enable_memory_usage_test"
                                 id="semonto_enable_memory_usage_test"
-                                value="1" <?php checked(1, get_option('semonto_enable_memory_usage_test')); ?>
+                                value="1" <?php checked(1, get_option('semonto_enable_memory_usage_test', true)); ?>
                             />
                             <span class="semonto-health-monitor__test-switch-slider"></span>
                         </label>

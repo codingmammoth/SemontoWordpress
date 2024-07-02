@@ -224,12 +224,12 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if ($exec_available && get_option('semonto_enable_memory_usage_test')) {
+    if ($exec_available && get_option('semonto_enable_memory_usage_test', true)) {
         $config[] = [
             'test' => 'MemoryUsage',
             'config' => [
-                'warning_percentage_threshold' => (int) get_option('semonto_warning_threshold_memory_usage'),
-                'error_percentage_threshold' => (int) get_option('semonto_error_threshold_memory_usage')
+                'warning_percentage_threshold' => (int) get_option('semonto_warning_threshold_memory_usage', 90),
+                'error_percentage_threshold' => (int) get_option('semonto_error_threshold_memory_usage', 95)
             ]
         ];
     }
