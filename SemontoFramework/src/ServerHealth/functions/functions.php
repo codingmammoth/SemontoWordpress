@@ -117,7 +117,7 @@ function cacheResults($cache_file_path, $results)
             'time' => time(),
             'results' => $results
         ];
-        $json = json_encode($cache);
+        $json = wp_json_encode($cache);
         $fh = fopen($cache_file_path, 'w');
         if ($fh) {
             fwrite($fh, $json);
