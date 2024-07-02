@@ -129,6 +129,18 @@ function semonto_health_monitor_save_settings() {
         'type' => 'object',
         'sanitize_callback' => 'semonto_sanitize_disk_space_inode_config'
     ]);
+
+    // Caching
+    register_setting('semonto_health_monitor_settings', 'semonto_enable_caching', [
+        'type' => 'boolean'
+    ]);
+
+    register_setting('semonto_health_monitor_settings', 'semonto_cache_lifespan', [
+        'type' => 'integer',
+        'sanitize_callback' => function($new_value) {
+            return semonto_sanitize_cache_lifespan($new_value);
+        }
+    ]);
 }
 
 // generates the config to be passed tot the config.php file
@@ -141,11 +153,16 @@ function semonto_generate_config() {
             'db_pass' => '',
             'db_port' => 3306,
         ],
+        'cache' => [
+            'location' => sys_get_temp_dir(),
+            'life_span' => (int) get_option('semonto_cache_lifespan', 45),
+            'enabled' => (bool) get_option('semonto_enable_caching', true)
+        ],
         'tests' => semonto_generate_tests_config()
     ];
 
     $secret_key = get_option('semonto_secret_key');
-    if(strlen($secret_key)>0){
+    if(strlen($secret_key) > 0){
         $config['secret_key'] = trim($secret_key);
     }
 
@@ -456,6 +473,16 @@ function semonto_sanitize_threshold_percentage($setting, $new_value)
     if ((int) $new_value < 0 || (int) $new_value > 100) {
         add_settings_error($setting, $setting, 'The threshold should be a number from 0 to 100.');
         return get_option($setting);
+    }
+
+    return $new_value;
+}
+
+function semonto_sanitize_cache_lifespan($new_value)
+{
+    if ((int) $new_value < 0) {
+        add_settings_error('semonto_cache_lifespan', 'semonto_cache_lifespan', 'The cache expiration should be a positive number.');
+        return get_option('semonto_cache_lifespan');
     }
 
     return $new_value;
