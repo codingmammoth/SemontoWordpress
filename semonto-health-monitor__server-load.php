@@ -23,7 +23,7 @@
                             name="semonto_enable_now_test" 
                             id="semonto_enable_now_test" 
                             value="1" 
-                            <?php checked(1, get_option('semonto_enable_now_test')); ?> 
+                            <?php checked(1, get_option('semonto_enable_now_test', true)); ?> 
                         />
                         <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
@@ -62,7 +62,7 @@
                             name="semonto_enable_5m_test" 
                             id="semonto_enable_5m_test" 
                             value="1"
-                            <?php checked(1, get_option('semonto_enable_5m_test')); ?> 
+                            <?php checked(1, get_option('semonto_enable_5m_test', true)); ?> 
                         />
                         <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
@@ -101,7 +101,7 @@
                             name="semonto_enable_15m_test" 
                             id="semonto_enable_15m_test" 
                             value="1" 
-                            <?php checked(1, get_option('semonto_enable_15m_test')); ?> 
+                            <?php checked(1, get_option('semonto_enable_15m_test', true)); ?> 
                         />
                         <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>

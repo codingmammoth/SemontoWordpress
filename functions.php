@@ -176,36 +176,35 @@ function semonto_generate_tests_config() {
     $default_disk_config = get_default_disk_config();
     $config = [];
 
-    if (get_option('semonto_enable_now_test')) {
+    if (get_option('semonto_enable_now_test', true)) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 
                 'type' => 'current', 
-                'warning_threshold' => get_option('semonto_warning_threshold_now'), 
-                'error_threshold' =>  get_option('semonto_error_threshold_now')
+                'warning_threshold' => get_option('semonto_warning_threshold_now', 5), 
+                'error_threshold' =>  get_option('semonto_error_threshold_now', 15)
             ]
         ];
-        
     }
 
-    if (get_option('semonto_enable_5m_test')) {
+    if (get_option('semonto_enable_5m_test', true)) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 
                 'type' => 'average_5_min', 
-                'warning_threshold' => get_option('semonto_warning_threshold_5m'), 
-                'error_threshold' => get_option('semonto_error_threshold_5m')
+                'warning_threshold' => get_option('semonto_warning_threshold_5m', 5), 
+                'error_threshold' => get_option('semonto_error_threshold_5m', 15)
             ]
         ];
     }
 
-    if (get_option('semonto_enable_15m_test')) {
+    if (get_option('semonto_enable_15m_test', true)) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 
                 'type' => 'average_15_min', 
-                'warning_threshold' => get_option('semonto_warning_threshold_15m'), 
-                'error_threshold' => get_option('semonto_error_threshold_15m') 
+                'warning_threshold' => get_option('semonto_warning_threshold_15m', 5), 
+                'error_threshold' => get_option('semonto_error_threshold_15m', 5)
             ]
         ];
     }
