@@ -121,8 +121,13 @@ function getCachedResults($cache_file_path, $cache_life_span)
 {
     $results = false;
     try {
-        if (file_exists($cache_file_path)) {
-            $cached_data = file_get_contents($cache_file_path);
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-base.php');
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-direct.php');
+        require_once(ABSPATH . '/wp-includes/class-wp-error.php');
+
+        $fs = new WP_Filesystem_Direct(false);
+        if ($fs->exists($cache_file_path)) {
+            $cached_data = $fs->get_contents($cache_file_path);
             if ($cached_data) {
                 $cached_data = json_decode($cached_data, true);
 
