@@ -18,7 +18,6 @@ class WPMaxDatabaseConnections extends ServerHealthTest {
         $status = ServerStates::ok;
         $description = "";
 
-
         // Check if $wpdb is available
         if (!class_exists('wpdb')) {
             return new ServerHealthResult(
@@ -50,17 +49,18 @@ class WPMaxDatabaseConnections extends ServerHealthTest {
         $percentage_connections = number_format((($current_connections / $max_connections) * 100),2,".","");
         $description = "Number of connections: $current_connections ($percentage_connections%)";
 
-
         $warning_percentage_threshold = isset($this->config['warning_percentage_threshold']) ? $this->config['warning_percentage_threshold'] :75;
         $error_percentage_threshold = isset($this->config['error_percentage_threshold']) ? $this->config['error_percentage_threshold'] : 90;
 
-        if($percentage_connections>=$warning_percentage_threshold){
-            $status =  $status = ServerStates::warning;
-            $description = "The warning percentage is bigger than the connection percentage";
+        if ($warning_percentage_threshold >= $error_percentage_threshold) {
+            $description = "The warning percentage is bigger than the error percentage";
         }
-        if($percentage_connections>=$error_percentage_threshold){
+
+        if($percentage_connections >= $warning_percentage_threshold){
+            $status =  $status = ServerStates::warning;
+        }
+        if($percentage_connections >= $error_percentage_threshold){
             $status =  $status = ServerStates::error;
-            $description = "The error percentage is bigger than the connection percentage";
         }
         
         $value = number_format((float)$percentage_connections/100,4,".","");
