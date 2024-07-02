@@ -1,5 +1,5 @@
 <div class="semonto-health-monitor__test-container">
-    <h3 scope="row">Wordpress Database Test</h3>
+    <h3>Wordpress Database Test</h3>
     <p>
         Get notified if there are issues with your database. Semonto will also
         check how many current database connections are in use and what your

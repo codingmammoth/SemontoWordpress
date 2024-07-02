@@ -1,5 +1,5 @@
 <div class="semonto-health-monitor__test-container">
-    <h3 scope="row">Caching</h3>
+    <h3>Caching</h3>
     <p>
         Enabling caching for your test results.
     </p>

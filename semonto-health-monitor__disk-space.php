@@ -1,7 +1,7 @@
 <?php $disks = semonto_get_disk_space_config(); ?>
 
 <div class="semonto-health-monitor__test-container">
-    <h3 scope="row">Disk Space</h3>
+    <h3>Disk Space</h3>
     <p>
         Test the amount of space on your disks.
     </p>

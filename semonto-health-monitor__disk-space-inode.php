@@ -1,7 +1,7 @@
 <?php $disks = semonto_get_disk_space_inode_config(); ?>
 
 <div class="semonto-health-monitor__test-container">
-    <h3 scope="row">Disk Space Inode</h3>
+    <h3>Disk Space Inode</h3>
     <p>
         Test the amount of free inodes on your disks.
     </p>

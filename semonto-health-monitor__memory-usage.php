@@ -1,5 +1,5 @@
 <div class="semonto-health-monitor__test-container">
-    <h3 scope="row">Memory Usage</h3>
+    <h3>Memory Usage</h3>
     <p>
         Get notified when the memory usage on your server is too high
     </p>
