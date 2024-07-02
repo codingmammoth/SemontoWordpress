@@ -209,7 +209,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if (get_option('semonto_enable_wpdb_test')) {
+    if (get_option('semonto_enable_wpdb_test', true)) {
         $config[] = [
             'test' => 'WPCheckConnection',
             'config' => [], 
@@ -217,8 +217,8 @@ function semonto_generate_tests_config() {
         $config[] = [
             'test'=>'WPMaxDatabaseConnections',
             'config' => [ 
-                'warning_percentage_threshold' => get_option('semonto_warning_threshold_wpdb'), 
-                'error_percentage_threshold' =>get_option('semonto_error_threshold_wpdb') 
+                'warning_percentage_threshold' => get_option('semonto_warning_threshold_wpdb', 75), 
+                'error_percentage_threshold' =>get_option('semonto_error_threshold_wpdb', 90)
             ]
         ];
     }
