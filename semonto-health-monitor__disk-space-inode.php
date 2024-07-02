@@ -19,7 +19,7 @@
                         type="checkbox"
                         name="semonto_enable_disk_space_inode_test"
                         id="semonto_enable_disk_space_inode_test"
-                        value="1" <?php checked(1, get_option('semonto_enable_disk_space_inode_test')); ?>
+                        value="1" <?php checked(1, get_option('semonto_enable_disk_space_inode_test', true)); ?>
                         />
                         <span class="semonto-health-monitor__test-switch-slider"></span>
                     </label>
