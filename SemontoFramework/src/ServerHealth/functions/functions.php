@@ -133,7 +133,7 @@ function getCachedResults($cache_file_path, $cache_life_span)
     $results = false;
     try {
         if (file_exists($cache_file_path)) {
-            $cached_data = file_get_contents($cache_file_path);
+            $cached_data = $wp_filesystem->get_contents($cache_file_path);
             if ($cached_data) {
                 $cached_data = json_decode($cached_data, true);
 
