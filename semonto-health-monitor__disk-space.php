@@ -37,15 +37,15 @@
                 <div class="semonto-health-monitor__test">
                     <div class="semonto-health-monitor__switch-container">
                         <label
-                            for="semonto_config_disk_space[<?php echo $disk_name; ?>][enabled]"
+                            for="semonto_config_disk_space[<?php echo esc_html($disk_name); ?>][enabled]"
                             class="semonto-health-monitor__switch-label"
-                        ><?php echo $disk_name; ?>:</label>
+                        ><?php echo esc_html($disk_name); ?>:</label>
                         <div class="switch-option">
                             <label class="semonto-health-monitor__test-switch">
                                 <input
                                     type="checkbox"
-                                    name="semonto_config_disk_space[<?php echo $disk_name; ?>][enabled]"
-                                    id="semonto_config_disk_space[<?php echo $disk_name; ?>][enabled]"
+                                    name="semonto_config_disk_space[<?php echo esc_html($disk_name); ?>][enabled]"
+                                    id="semonto_config_disk_space[<?php echo esc_html($disk_name); ?>][enabled]"
                                     value="1" <?php checked(1, $disk_config['enabled']); ?>
                                 />
                                 <span class="semonto-health-monitor__test-switch-slider"></span>
@@ -56,7 +56,7 @@
                         type="number"
                         min="0"
                         max="100"
-                        name="semonto_config_disk_space[<?php echo $disk_name; ?>][warning_percentage_threshold]"
+                        name="semonto_config_disk_space[<?php echo esc_html($disk_name); ?>][warning_percentage_threshold]"
                         value="<?php echo esc_attr(intval($disk_config['warning_percentage_threshold'])); ?>"
                         class="semonto-health-monitor__test-threshold"
                     />
@@ -64,7 +64,7 @@
                         type="number"
                         min="0"
                         max="100"
-                        name="semonto_config_disk_space[<?php echo $disk_name; ?>][error_percentage_threshold]"
+                        name="semonto_config_disk_space[<?php echo esc_html($disk_name); ?>][error_percentage_threshold]"
                         value="<?php echo esc_attr(intval($disk_config['error_percentage_threshold'])); ?>"
                         class="semonto-health-monitor__test-threshold"
                     />
