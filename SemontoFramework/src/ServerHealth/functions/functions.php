@@ -52,21 +52,6 @@ function getTests ($config, $db) {
     }
 }
 
-function connectToDB($config)
-{
-    try {
-        $db = mysqli_connect($config['db_host'], $config['db_user'], $config['db_pass'], null, $config['db_port']);
-
-        if ($db->connect_errno) {
-            return false;
-        } else {
-            return $db;
-        }
-    } catch (\Throwable $th) {
-        return false;
-    }
-}
-
 function validateSecretKey($config)
 {
     if (isset($config['secret_key']) && $config['secret_key'] !== '') {
