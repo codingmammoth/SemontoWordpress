@@ -102,9 +102,9 @@
 
             <?php include 'semonto-health-monitor__secret-key.php'; ?>
 
-            <!-- <hr class="semonto-health-monitor__test-divider"> -->
+            <hr class="semonto-health-monitor__test-divider">
 
-            <?php // include 'semonto-health-monitor__caching.php'; ?>
+            <?php include 'semonto-health-monitor__caching.php'; ?>
 
         </div>
 
