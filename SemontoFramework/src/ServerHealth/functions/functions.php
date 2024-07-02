@@ -2,6 +2,8 @@
 
 namespace Semonto\ServerHealth;
 
+use \WP_Filesystem_Direct;
+
 function getStartTime()
 {
     $starttime = explode(' ', microtime());  
@@ -113,16 +115,18 @@ function getCacheFilePath($cache_location, $installed_directory)
 function cacheResults($cache_file_path, $results)
 {
     try {
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-base.php');
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-direct.php');
+        require_once(ABSPATH . '/wp-includes/class-wp-error.php');
+
         $cache = [
             'time' => time(),
             'results' => $results
         ];
         $json = wp_json_encode($cache);
-        $fh = fopen($cache_file_path, 'w');
-        if ($fh) {
-            fwrite($fh, $json);
-            fclose($fh);
-        }
+
+        $fs = new WP_Filesystem_Direct(false);
+        $fs->put_contents($cache_file_path, $json, 0644);
     } catch (\Throwable $th) {
         // Couldn't store the results in the cache, continue without storing the results.
     }
@@ -133,8 +137,7 @@ function getCachedResults($cache_file_path, $cache_life_span)
     $results = false;
     try {
         if (file_exists($cache_file_path)) {
-            $wpfsd = new WP_Filesystem_Direct( false );
-            $cached_data = $wpfsd->get_contents ( $cache_file_path );
+            $cached_data = file_get_contents($cache_file_path);
             if ($cached_data) {
                 $cached_data = json_decode($cached_data, true);
 
