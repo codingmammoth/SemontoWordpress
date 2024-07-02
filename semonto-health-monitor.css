@@ -36,6 +36,10 @@
   color: inherit;
 }
 
+.semonto-health-monitor__tab:hover {
+  color: inherit;
+}
+
 .semonto-health-monitor__tab.active {
   box-shadow: 0 1px #fff;
   background-color: #fff;
@@ -46,7 +50,7 @@
 
 .semonto-health-monitor__tab:not(.active):hover {
   color: inherit;
-  background-color: #e5e5e5 !important;
+  background-color: #d3d3d3 !important;
 }
 
 /*

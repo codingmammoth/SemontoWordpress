@@ -18,7 +18,7 @@ add_action('admin_enqueue_scripts', 'semonto_health_monitor_enqueue_styles');
 add_action('admin_enqueue_scripts', 'semonto_health_monitor_enqueue_script');
 
 function semonto_health_monitor_settings_page() {
-        $current_tab = isset( $_GET['semonto_tab'] ) ? $_GET['semonto_tab'] : 'semonto';
+        $current_tab = isset( $_GET['semonto_tab'] ) ? sanitize_text_field($_GET['semonto_tab']) : 'semonto';
     ?>
 
         <div class="semonto-health-monitor">
