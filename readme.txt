@@ -121,5 +121,12 @@ at any time.
 
 == Changelog ==
 
-#### Version 1.1.0 (Jul 4th, 2024)
+#### Version 1.0.1 (Feb 23rd, 2024)
 - Initial release
+
+#### Version 1.1.0 (Jul 4th, 2024)
+- Improved layout
+- Caching of results added
+- Disk space test added
+- Disk space inode test added
+- Memory usage test added
