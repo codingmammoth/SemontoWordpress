@@ -4,7 +4,7 @@ Tags: uptime, broken links, SSL, server health, Semonto
 Requires at least: 5.0
 Tested up to: 6.4
 Requires PHP: 7.4
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -121,5 +121,5 @@ at any time.
 
 == Changelog ==
 
-#### Version 1.0.1 (Feb 23rd, 2024)
+#### Version 1.1.0 (Jul 4th, 2024)
 - Initial release
