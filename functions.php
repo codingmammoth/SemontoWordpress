@@ -371,19 +371,24 @@ function semonto_notice_dismissed () {
 
 function semonto_get_available_disks ()
 {
-    $output = shell_exec('df -h');
-    $lines = explode("\n", $output);
     $disks = [];
+    $exec_available = function_exists('exec');
+    $shell_exec_available = function_exists('shell_exec');
 
-    for ($i = 1; $i < count($lines); $i++) {
-        if (trim($lines[$i]) != '') {
-            $cols = preg_split('/\s+/', $lines[$i]);
-            if (preg_match('/^\/dev\//', $cols[0])) {
-                $disks[$cols[0]] = [
-                    "warning_percentage_threshold" => 75,
-                    "error_percentage_threshold" => 90,
-                    "enabled" => 0
-                ];
+    if ($exec_available && $shell_exec_available) {
+        $output = shell_exec('df -h');
+        $lines = explode("\n", $output);
+
+        for ($i = 1; $i < count($lines); $i++) {
+            if (trim($lines[$i]) != '') {
+                $cols = preg_split('/\s+/', $lines[$i]);
+                if (preg_match('/^\/dev\//', $cols[0])) {
+                    $disks[$cols[0]] = [
+                        "warning_percentage_threshold" => 75,
+                        "error_percentage_threshold" => 90,
+                        "enabled" => 0
+                    ];
+                }
             }
         }
     }
