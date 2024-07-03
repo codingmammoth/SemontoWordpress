@@ -3,7 +3,7 @@
 /*
 Plugin Name: Semonto Health Monitor
 Version: 1.1.0
-Description: Semonto health plugin for Wordpress 
+Description: Semonto health plugin for WordPress 
 Author: Coding Mammoth - Semonto
 */
 
