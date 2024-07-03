@@ -171,10 +171,13 @@ function semonto_generate_config() {
 
 // generates an array with the enabled tests 
 function semonto_generate_tests_config() {
-    $exec_available = function_exists('exec');
-    $shell_exec_available = function_exists('shell_exec');
-    $default_disk_config = semonto_get_default_disk_config();
+    $features = semonto_check_available_features();
     $config = [];
+    $default_disk_config = [];
+
+    if ($features['df_command']) {
+        $default_disk_config = semonto_get_default_disk_config();
+    }
 
     if (get_option('semonto_enable_now_test', true)) {
         $config[] = [
@@ -223,7 +226,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if ($exec_available && get_option('semonto_enable_memory_usage_test', true)) {
+    if ($features['vmstat_command'] && get_option('semonto_enable_memory_usage_test', true)) {
         $config[] = [
             'test' => 'MemoryUsage',
             'config' => [
@@ -233,7 +236,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if ($exec_available && $shell_exec_available && get_option('semonto_enable_disk_space_test', true)) {
+    if ($features['df_command'] && get_option('semonto_enable_disk_space_test', true)) {
         $test_config = [
             'test' => 'DiskSpace',
             'config' => [
@@ -255,7 +258,7 @@ function semonto_generate_tests_config() {
         $config[] = $test_config;
     }
 
-    if ($exec_available && $shell_exec_available && get_option('semonto_enable_disk_space_inode_test', true)) {
+    if ($features['df_command'] && get_option('semonto_enable_disk_space_inode_test', true)) {
         $test_config = [
             'test' => 'DiskSpaceInode',
             'config' => [
@@ -426,23 +429,18 @@ function semonto_check_available_features ()
 function semonto_get_available_disks ()
 {
     $disks = [];
-    $exec_available = function_exists('exec');
-    $shell_exec_available = function_exists('shell_exec');
 
-    if ($exec_available && $shell_exec_available) {
-        $output = shell_exec('df -h');
-        $lines = explode("\n", $output);
-
-        for ($i = 1; $i < count($lines); $i++) {
-            if (trim($lines[$i]) != '') {
-                $cols = preg_split('/\s+/', $lines[$i]);
-                if (preg_match('/^\/dev\//', $cols[0])) {
-                    $disks[$cols[0]] = [
-                        "warning_percentage_threshold" => 75,
-                        "error_percentage_threshold" => 90,
-                        "enabled" => 0
-                    ];
-                }
+    $output = shell_exec('df -h');
+    $lines = explode("\n", $output);
+    for ($i = 1; $i < count($lines); $i++) {
+        if (trim($lines[$i]) != '') {
+            $cols = preg_split('/\s+/', $lines[$i]);
+            if (preg_match('/^\/dev\//', $cols[0])) {
+                $disks[$cols[0]] = [
+                    "warning_percentage_threshold" => 75,
+                    "error_percentage_threshold" => 90,
+                    "enabled" => 0
+                ];
             }
         }
     }
