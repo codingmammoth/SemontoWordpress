@@ -6,7 +6,7 @@
         Test the amount of free inodes on your disks.
     </p>
 
-    <?php if($exec_available) : ?>
+    <?php if($exec_available && $shell_exec_available) : ?>
         <div class="semonto-health-monitor__test">
             <div class="semonto-health-monitor__switch-container">
                 <label 

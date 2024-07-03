@@ -233,7 +233,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if ($shell_exec_available && get_option('semonto_enable_disk_space_test', true)) {
+    if ($exec_available && $shell_exec_available && get_option('semonto_enable_disk_space_test', true)) {
         $test_config = [
             'test' => 'DiskSpace',
             'config' => [
@@ -255,7 +255,7 @@ function semonto_generate_tests_config() {
         $config[] = $test_config;
     }
 
-    if ($exec_available && get_option('semonto_enable_disk_space_inode_test', true)) {
+    if ($exec_available && $shell_exec_available && get_option('semonto_enable_disk_space_inode_test', true)) {
         $test_config = [
             'test' => 'DiskSpaceInode',
             'config' => [

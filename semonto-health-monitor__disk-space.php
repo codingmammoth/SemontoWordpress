@@ -6,7 +6,7 @@
         Test the amount of space on your disks.
     </p>
 
-    <?php if($shell_exec_available) : ?>
+    <?php if($exec_available && $shell_exec_available) : ?>
         <div class="semonto-health-monitor__test">
             <div class="semonto-health-monitor__switch-container">
                 <label 
