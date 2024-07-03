@@ -318,11 +318,20 @@ function semonto_health_check_query_var($public_query_vars) {
  * @since    1.0.0
  */
 function semonto_run_health_endpoint() {
+    add_filter('plugin_action_links_' . plugin_basename(__DIR__) . '/semonto-health-monitor.php', 'semonto_add_plugin_page_settings_link');
     add_filter("query_vars", "semonto_health_check_query_var", 10, 1);
     add_action('parse_request', 'semonto_health_check_request',10,1);
     add_action('init', 'semonto_health_monitor_rewrite_rules',10); 
 }
 
+function semonto_add_plugin_page_settings_link( $links ) {
+	$links[] = '<a href="' .
+		admin_url( 'options-general.php?page=semonto_health_monitor_settings' ) .
+		'">' . __('Settings') . '</a>';
+	return $links;
+}
+
+// Not used anymore.
 function semonto_df_error_notice() {
     ?>
     <div class="error">
