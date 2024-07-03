@@ -173,7 +173,7 @@ function semonto_generate_config() {
 function semonto_generate_tests_config() {
     $exec_available = function_exists('exec');
     $shell_exec_available = function_exists('shell_exec');
-    $default_disk_config = get_default_disk_config();
+    $default_disk_config = semonto_get_default_disk_config();
     $config = [];
 
     if (get_option('semonto_enable_now_test', true)) {
@@ -405,7 +405,7 @@ function semonto_get_available_disks ()
     return $disks;
 }
 
-function get_default_disk_config()
+function semonto_get_default_disk_config()
 {
     $available_disks = semonto_get_available_disks();
     $default_disk_config = [];
@@ -422,7 +422,7 @@ function semonto_get_disk_space_config ()
     $disk_space_config = semonto_get_available_disks();
     $available_disks = array_keys($disk_space_config);
 
-    $configured_disks = get_option('semonto_config_disk_space', get_default_disk_config());
+    $configured_disks = get_option('semonto_config_disk_space', semonto_get_default_disk_config());
     foreach ($configured_disks as $disk_name => $disk_config) {
         if (in_array($disk_name, $available_disks)) {
             $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
@@ -437,7 +437,7 @@ function semonto_get_disk_space_inode_config ()
     $disk_space_config = semonto_get_available_disks();
     $available_disks = array_keys($disk_space_config);
 
-    $configured_disks = get_option('semonto_config_disk_space_inode', get_default_disk_config());
+    $configured_disks = get_option('semonto_config_disk_space_inode', semonto_get_default_disk_config());
     foreach ($configured_disks as $disk_name => $disk_config) {
         if (in_array($disk_name, $available_disks)) {
             $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
