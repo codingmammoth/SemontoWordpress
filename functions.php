@@ -386,6 +386,7 @@ function semonto_check_available_features ()
     $features = [
         'exec_function' => true,
         'shell_exec_function' => true,
+        'sys_getloadavg_function' => true,
         'df_command' => true,
         'vmstat_command' => true
     ];
@@ -406,6 +407,10 @@ function semonto_check_available_features ()
 
     if (!function_exists('shell_exec')) {
         $features['shell_exec_function'] = false;
+    }
+
+    if (!function_exists('sys_getloadavg')) {
+        $features['sys_getloadavg_function'] = false;
     }
 
     if ($features['exec_function'] && $features['shell_exec_function']) {
