@@ -378,6 +378,51 @@ function semonto_notice_dismissed () {
     }
 }
 
+function semonto_check_available_features ()
+{
+    $features = [
+        'exec_function' => true,
+        'shell_exec_function' => true,
+        'df_command' => true,
+        'vmstat_command' => true
+    ];
+
+    $disabled = explode(',', ini_get('disable_functions'));
+
+    if (in_array('exec', $disabled)) {
+        $features['exec_function'] = false;
+    }
+
+    if (!function_exists('exec')) {
+        $features['exec_function'] = false;
+    }
+
+    if (in_array('shell_exec', $disabled)) {
+        $features['shell_exec_function'] = false;
+    }
+
+    if (!function_exists('shell_exec')) {
+        $features['shell_exec_function'] = false;
+    }
+
+    if ($features['exec_function'] && $features['shell_exec_function']) {
+        $df_command = `which df`;
+        if (!$df_command) {
+            $features['df_command'] = false;
+        }
+
+        $vmstat_command = `which vmstat`;
+        if (!$vmstat_command) {
+            $features['vmstat_command'] = false;
+        }
+    } else {
+        $features['df_command'] = false;
+        $features['vmstat_command'] = false;
+    }
+
+    return $features;
+}
+
 function semonto_get_available_disks ()
 {
     $disks = [];
@@ -405,7 +450,7 @@ function semonto_get_available_disks ()
     return $disks;
 }
 
-function semonto_get_default_disk_config()
+function semonto_get_default_disk_config ()
 {
     $available_disks = semonto_get_available_disks();
     $default_disk_config = [];
