@@ -409,6 +409,10 @@ function semonto_check_available_features ()
         $features['shell_exec_function'] = false;
     }
 
+    if (in_array('sys_getloadavg', $disabled)) {
+        $features['sys_getloadavg_function'] = false;
+    }
+
     if (!function_exists('sys_getloadavg')) {
         $features['sys_getloadavg_function'] = false;
     }
