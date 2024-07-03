@@ -4,7 +4,7 @@
         Get notified when the memory usage on your server is too high
     </p>
 
-    <?php if($exec_available) : ?>
+    <?php if($features['vmstat_command']) : ?>
         <div class="semonto-health-monitor__test-thresholds">
             <div class="semonto-health-monitor__test-threshold">Warning threshold</div>
             <div class="semonto-health-monitor__test-threshold">Error threshold</div>

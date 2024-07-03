@@ -1,6 +1,5 @@
 <?php
-    $exec_available = function_exists('exec');
-    $shell_exec_available = function_exists('shell_exec');
+    $features = semonto_check_available_features();
 ?>
 
 <div class="semonto-health-monitor__hero">

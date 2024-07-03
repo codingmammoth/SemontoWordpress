@@ -1,6 +1,6 @@
 <?php 
     $disks = [];
-    if ($exec_available && $shell_exec_available) {
+    if ($features['df_command']) {
         $disks = semonto_get_disk_space_config(); 
     }
 ?>
@@ -11,7 +11,7 @@
         Test the amount of space on your disks.
     </p>
 
-    <?php if ($exec_available && $shell_exec_available) : ?>
+    <?php if ($features['df_command']) : ?>
         <div class="semonto-health-monitor__test">
             <div class="semonto-health-monitor__switch-container">
                 <label 
