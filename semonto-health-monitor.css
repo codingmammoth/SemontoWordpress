@@ -34,6 +34,17 @@
   font-weight: 600;
   text-decoration: none;
   color: inherit;
+  border-top: 1px solid #c3c4c7;
+  border-right: 1px solid #c3c4c7;
+  border-left: 1px solid #c3c4c7;
+}
+
+.semonto-health-monitor__tab:first-child {
+  border-right: none;
+}
+
+.semonto-health-monitor__tab:last-child {
+  border-left: none;
 }
 
 .semonto-health-monitor__tab:hover {
@@ -43,9 +54,6 @@
 .semonto-health-monitor__tab.active {
   box-shadow: 0 1px #fff;
   background-color: #fff;
-  border-top: 1px solid #c3c4c7;
-  border-right: 1px solid #c3c4c7;
-  border-left: 1px solid #c3c4c7;
 }
 
 .semonto-health-monitor__tab:not(.active):hover {
