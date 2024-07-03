@@ -179,7 +179,7 @@ function semonto_generate_tests_config() {
         $default_disk_config = semonto_get_default_disk_config();
     }
 
-    if (get_option('semonto_enable_now_test', true)) {
+    if ($features['sys_getloadavg_function'] && get_option('semonto_enable_now_test', true)) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 
@@ -190,7 +190,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if (get_option('semonto_enable_5m_test', true)) {
+    if ($features['sys_getloadavg_function'] && get_option('semonto_enable_5m_test', true)) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 
@@ -201,7 +201,7 @@ function semonto_generate_tests_config() {
         ];
     }
 
-    if (get_option('semonto_enable_15m_test', true)) {
+    if ($features['sys_getloadavg_function'] && get_option('semonto_enable_15m_test', true)) {
         $config[] = [
             'test' => 'ServerLoad',
             'config' => [ 
