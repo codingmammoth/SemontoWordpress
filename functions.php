@@ -418,13 +418,21 @@ function semonto_check_available_features ()
     }
 
     if ($features['exec_function'] && $features['shell_exec_function']) {
-        $df_command = `which df`;
-        if (!$df_command) {
+        try {
+            $df_command = exec('which df');
+            if (!$df_command) {
+                $features['df_command'] = false;
+            }
+        } catch (\Throwable $th) {
             $features['df_command'] = false;
         }
 
-        $vmstat_command = `which vmstat`;
-        if (!$vmstat_command) {
+        try {
+            $vmstat_command = exec('which df');
+            if (!$vmstat_command) {
+                $features['vmstat_command'] = false;
+            }
+        } catch (\Throwable $th) {
             $features['vmstat_command'] = false;
         }
     } else {
