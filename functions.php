@@ -173,11 +173,12 @@ function semonto_generate_config() {
 function semonto_generate_tests_config() {
     $features = semonto_check_available_features();
     $config = [];
-    $default_disk_config = [];
 
+    $default_disk_config = [];
     if ($features['df_command']) {
         $default_disk_config = semonto_get_default_disk_config();
     }
+    $available_disks = array_keys($default_disk_config);
 
     if ($features['sys_getloadavg_function'] && get_option('semonto_enable_now_test', true)) {
         $config[] = [
@@ -246,7 +247,7 @@ function semonto_generate_tests_config() {
 
         $configured_disks = get_option('semonto_config_disk_space', $default_disk_config);
         foreach ($configured_disks as $configured_disk => $disk_config) {
-            if (isset($disk_config['enabled']) && (int) $disk_config['enabled']) {
+            if (isset($disk_config['enabled']) && (int) $disk_config['enabled'] && in_array($configured_disk, $available_disks)) {
                 $test_config['config']['disks'][] = [
                     'name' => $configured_disk,
                     'warning_percentage_threshold' => $disk_config['warning_percentage_threshold'],
@@ -268,7 +269,7 @@ function semonto_generate_tests_config() {
 
         $configured_disks = get_option('semonto_config_disk_space_inode', $default_disk_config);
         foreach ($configured_disks as $configured_disk => $disk_config) {
-            if (isset($disk_config['enabled']) && (int) $disk_config['enabled']) {
+            if (isset($disk_config['enabled']) && (int) $disk_config['enabled'] && in_array($configured_disk, $available_disks)) {
                 $test_config['config']['disks'][] = [
                     'name' => $configured_disk,
                     'warning_percentage_threshold' => (int) $disk_config['warning_percentage_threshold'],
