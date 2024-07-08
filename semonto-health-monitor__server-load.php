@@ -129,7 +129,13 @@
         <?php else : ?>
             <p class="semonto-health-monitor__not-available">
                 <span>ℹ️</span>
-                This test is not available due to your server setup.
+                This test is not available due to your server setup. See
+                <a 
+                    target="_blank"
+                    rel="noopener noreferer"
+                    href="https://semonto.com/how-to/how-to-monitor-a-wordpress-website-with-semonto"
+                >our docs</a>
+                for the server requirements.
             </p>
         <?php endif; ?>
 
