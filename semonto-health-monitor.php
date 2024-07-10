@@ -5,6 +5,8 @@ Plugin Name: Semonto Health Monitor
 Version: 1.1.0
 Description: Semonto health plugin for WordPress 
 Author: Coding Mammoth - Semonto
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 */
 
 // If this file is called directly, abort.
