@@ -11,7 +11,7 @@
         </div>
         <div>
             <p>
-                Hi, thank you for installing the Semonto plug in.
+                Hi, thank you for installing the Semonto plug-in.
             </p>
         </div>
     </div>
@@ -22,10 +22,7 @@
                 <h2>With semonto you can monitor</h2>
                 <ol>
                     <li>
-                        <a href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'website_monitoring' ) )?>">
-                            <strong>The health of your website</strong>
-                        </a>
-
+                        <strong>The health of your website</strong>
                         <ul class="semonto-health-monitor__hero-content-list">
                             <li>Uptime</li>
                             <li>Broken links</li>
@@ -35,10 +32,7 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'server_health_monitoring' ) )?>">
-                            <strong>The health of your server</strong>
-                        </a>
-
+                        <strong>The health of your server</strong>
                         <ul class="semonto-health-monitor__hero-content-list">
                             <li>Server load</li>
                             <li>Database</li>
@@ -48,18 +42,29 @@
                 </ol>
 
                 <h2>How to get started</h2>
-
-                <p>You need a semonto account to get started</p>
-
-                <p>
-                    Visit
-                    <a 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        href="https://supervisor.semonto.com/signup?url=<?php echo esc_url(get_site_url()) ?>"
-                    >semonto.com</a>
-                    to get a free 14-day trial.
-                </p>
+                <ol>
+                    <li>
+                        Create a Semonto account. Visit 
+                        <a 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            href="https://supervisor.semonto.com/signup?url=<?php echo esc_url(get_site_url()) ?>"
+                        ><strong>semonto.com</strong></a>
+                        to get a free 14-day trial.
+                    </li>
+                    <li>
+                        To monitor the health of your website, click 
+                        <a 
+                            href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'website_monitoring' ) )?>"
+                        ><strong>here</strong></a>.
+                    </li>
+                    <li>
+                        If you also want to monitor the server in more depth, click 
+                        <a 
+                            href="<?php echo esc_url( add_query_arg( 'semonto_tab', 'server_health_monitoring' ) )?>"
+                        ><strong>here</strong></a>.
+                    </li>
+                </ol>
 
             </div>
         </div>
