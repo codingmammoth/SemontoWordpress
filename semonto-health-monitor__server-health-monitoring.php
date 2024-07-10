@@ -28,7 +28,8 @@
                 <ol>
                     <li>
                         Go to 
-                        <a target="_blank" rel="noopener noreferrer" href="https://supervisor.semonto.com">supervisor.semonto.com</a> 
+                        <a target="_blank" rel="noopener noreferrer" href="https://supervisor.semonto.com"
+                    ><strong>Semonto</strong></a> 
                         and login
                     </li>
                     <li>Add a new server</li>
@@ -73,9 +74,7 @@
 
         <div class="form">
 
-            <p>
-                If you want to use server health monitoring you can specify the tests below.
-            </p>
+            <h2>Configure health tests</h2>
 
             <hr class="semonto-health-monitor__test-divider">
 
