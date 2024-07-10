@@ -6,7 +6,7 @@
 ?>
 
 <div class="semonto-health-monitor__test-container">
-    <h3>Disk Space Inode</h3>
+    <h3>Disk space inode</h3>
     <p>
         Test the amount of free inodes on your disks.
     </p>
@@ -44,7 +44,7 @@
                         <label 
                             for="semonto_config_disk_space_inode[<?php echo esc_html($disk_name); ?>][enabled]"
                             class="semonto-health-monitor__switch-label"
-                        ><?php echo esc_html($disk_name); ?>:</label>
+                        ><?php echo esc_html($disk_name); ?></label>
                         <div class="switch-option">
                             <label class="semonto-health-monitor__test-switch">
                                 <input

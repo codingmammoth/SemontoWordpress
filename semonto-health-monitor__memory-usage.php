@@ -1,7 +1,7 @@
 <div class="semonto-health-monitor__test-container">
-    <h3>Memory Usage</h3>
+    <h3>Memory usage</h3>
     <p>
-        Get notified when the memory usage on your server is too high
+        Get notified when the memory usage of your server is too high.
     </p>
 
     <?php if ($features['vmstat_command']) : ?>
@@ -16,7 +16,7 @@
                     <label
                         for="semonto_enable_memory_usage_test"
                         class="semonto-health-monitor__switch-label"
-                    >Memory usage:</label>
+                    >Memory usage</label>
                     <div class="switch-option">
                         <label class="semonto-health-monitor__test-switch">
                             <input

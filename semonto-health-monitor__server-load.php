@@ -1,7 +1,7 @@
 <div class="semonto-health-monitor__test-container">
-    <h3>Load tests</h3>
+    <h3>Server load</h3>
     <p>
-        Get notified when the load of your server is too high
+        Get notified when the load of your server is too high.
     </p>
 
     <?php if ($features['sys_getloadavg_function']) : ?>
@@ -16,7 +16,7 @@
                     <label 
                         for="semonto_enable_now_test" 
                         class="semonto-health-monitor__switch-label"
-                    >Load now:</label>
+                    >Current load</label>
                     <div class="switch-option">
                         <label class="semonto-health-monitor__test-switch">
                             <input 
@@ -55,7 +55,7 @@
                     <label
                         for="semonto_enable_5m_test" 
                         class="semonto-health-monitor__switch-label"
-                    >Load average 5 minutes:</label>
+                    >Load average 5 minutes</label>
                     <div class="switch-option">
                         <label class="semonto-health-monitor__test-switch">
                             <input 
@@ -94,7 +94,7 @@
                     <label
                         for="semonto_enable_15m_test" 
                         class="semonto-health-monitor__switch-label"
-                    >Load average 15 minutes:</label>
+                    >Load average 15 minutes</label>
                     <div class="switch-option">
                         <label class="semonto-health-monitor__test-switch">
                             <input 

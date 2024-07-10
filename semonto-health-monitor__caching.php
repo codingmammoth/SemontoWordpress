@@ -1,7 +1,8 @@
 <div class="semonto-health-monitor__test-container">
     <h3>Caching</h3>
     <p>
-        Enabling caching for your test results.
+        If wanted, you can cache the results of the tests to ensure the tests 
+        are not executed too often.
     </p>
 
     <div class="semonto-health-monitor__test-thresholds">
@@ -14,7 +15,7 @@
                 <label 
                     for="semonto_enable_caching" 
                     class="semonto-health-monitor__switch-label"
-                >Enable caching:</label>
+                >Enable caching</label>
                 <div class="switch-option">
                     <label class="semonto-health-monitor__test-switch">
                         <input 

@@ -17,7 +17,7 @@
                 <label 
                     for="semonto_enable_wpdb_test" 
                     class="semonto-health-monitor__switch-label"
-                >Enable database test:</label>
+                >Enable database test</label>
                 <div class="switch-option">
                     <label class="semonto-health-monitor__test-switch">
                         <input 

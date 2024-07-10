@@ -6,7 +6,7 @@
 ?>
 
 <div class="semonto-health-monitor__test-container">
-    <h3>Disk Space</h3>
+    <h3>Disk space</h3>
     <p>
         Test the amount of space on your disks.
     </p>
@@ -44,7 +44,7 @@
                         <label
                             for="semonto_config_disk_space[<?php echo esc_html($disk_name); ?>][enabled]"
                             class="semonto-health-monitor__switch-label"
-                        ><?php echo esc_html($disk_name); ?>:</label>
+                        ><?php echo esc_html($disk_name); ?></label>
                         <div class="switch-option">
                             <label class="semonto-health-monitor__test-switch">
                                 <input
