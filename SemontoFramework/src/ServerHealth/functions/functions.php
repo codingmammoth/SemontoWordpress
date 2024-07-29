@@ -2,6 +2,8 @@
 
 namespace Semonto\ServerHealth;
 
+use \WP_Filesystem_Direct;
+
 function getStartTime()
 {
     $starttime = explode(' ', microtime());  
@@ -62,4 +64,81 @@ function validateSecretKey($config)
     } else {
         return true;
     }
+}
+
+function getCacheConfig($config, $installation_directory)
+{
+    $cache_enabled = false;
+    $cache_location = sys_get_temp_dir();
+    $cache_file_path = '';
+    $cache_life_span = 45;
+
+    if (isset($config['cache'])) {
+        if (isset($config['cache']['enabled']) && $config['cache']['enabled']) {
+            $cache_enabled = true;
+        }
+
+        if (isset($config['cache']['location'])) {
+            $cache_location = (string) $config['cache']['location'];
+        }
+
+        if (isset($config['cache']['life_span'])) {
+            $cache_life_span = (int) $config['cache']['life_span'];
+        }
+
+        $cache_file_path = getCacheFilePath($cache_location, $installation_directory);
+    }
+
+    return [ $cache_enabled, $cache_file_path, $cache_life_span ];
+}
+
+function getCacheFilePath($cache_location, $installed_directory)
+{
+    return $cache_location . '/server_health_' . md5($installed_directory) . '.json';
+}
+
+function cacheResults($cache_file_path, $results)
+{
+    try {
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-base.php');
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-direct.php');
+        require_once(ABSPATH . '/wp-includes/class-wp-error.php');
+
+        $cache = [
+            'time' => time(),
+            'results' => $results
+        ];
+        $json = wp_json_encode($cache);
+
+        $fs = new WP_Filesystem_Direct(false);
+        $fs->put_contents($cache_file_path, $json, 0644);
+    } catch (\Throwable $th) {
+        // Couldn't store the results in the cache, continue without storing the results.
+    }
+}
+
+function getCachedResults($cache_file_path, $cache_life_span)
+{
+    $results = false;
+    try {
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-base.php');
+        require_once(ABSPATH . '/wp-admin/includes/class-wp-filesystem-direct.php');
+        require_once(ABSPATH . '/wp-includes/class-wp-error.php');
+
+        $fs = new WP_Filesystem_Direct(false);
+        if ($fs->exists($cache_file_path)) {
+            $cached_data = $fs->get_contents($cache_file_path);
+            if ($cached_data) {
+                $cached_data = json_decode($cached_data, true);
+
+                if (isset($cached_data['results']['status']) && time() - $cached_data['time'] <= $cache_life_span) {
+                    $results = $cached_data['results'];
+                }
+            }
+        }
+    } catch (\Throwable $th) {
+        // Failed to get the cached results, continue without the cached results.
+    }
+
+    return $results;
 }

@@ -42,7 +42,7 @@ class WPCheckConnection extends ServerHealthTest{
             );
         }
 
-        $description = "successful connection";
+        $description = "Successful connection";
         
         $wpdb_test_result = $wpdb->query('SELECT 1');
         
