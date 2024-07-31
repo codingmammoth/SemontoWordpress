@@ -120,7 +120,7 @@ function semonto_health_monitor_save_settings() {
     register_setting('semonto_health_monitor_settings', "semonto_enable_disk_space_test");
     register_setting('semonto_health_monitor_settings', "semonto_config_disk_space", [
         'type' => 'object',
-        'sanitize_callback' => 'semonto_sanitize_disk_space_inode_config'
+        'sanitize_callback' => 'semonto_sanitize_disk_space_config'
     ]);
 
     // DiskSpaceInode
@@ -484,9 +484,11 @@ function semonto_get_disk_space_config ()
     $available_disks = array_keys($disk_space_config);
 
     $configured_disks = get_option('semonto_config_disk_space', semonto_get_default_disk_config());
-    foreach ($configured_disks as $disk_name => $disk_config) {
-        if (in_array($disk_name, $available_disks)) {
-            $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+    if ($configured_disks || !empty($configured_disks)) {
+        foreach ($configured_disks as $disk_name => $disk_config) {
+            if (in_array($disk_name, $available_disks)) {
+                $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+            }
         }
     }
 
@@ -499,9 +501,11 @@ function semonto_get_disk_space_inode_config ()
     $available_disks = array_keys($disk_space_config);
 
     $configured_disks = get_option('semonto_config_disk_space_inode', semonto_get_default_disk_config());
-    foreach ($configured_disks as $disk_name => $disk_config) {
-        if (in_array($disk_name, $available_disks)) {
-            $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+    if ($configured_disks || !empty($configured_disks)) {
+        foreach ($configured_disks as $disk_name => $disk_config) {
+            if (in_array($disk_name, $available_disks)) {
+                $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+            }
         }
     }
 
@@ -511,6 +515,10 @@ function semonto_get_disk_space_inode_config ()
 function semonto_sanitize_disk_config($setting, $new_settings)
 {
     $previous_settings = get_option($setting);
+
+    if (!$new_settings || !empty($new_settings)) {
+        return $previous_settings;
+    }
 
     try {
         foreach ($new_settings as $disk => $config) {
