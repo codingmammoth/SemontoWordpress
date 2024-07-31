@@ -512,6 +512,10 @@ function semonto_sanitize_disk_config($setting, $new_settings)
 {
     $previous_settings = get_option($setting);
 
+    if (!$new_settings || !empty($new_settings)) {
+        return $previous_settings;
+    }
+
     try {
         foreach ($new_settings as $disk => $config) {
             if (!isset($config['warning_percentage_threshold']) || !isset($config['error_percentage_threshold'])) {
