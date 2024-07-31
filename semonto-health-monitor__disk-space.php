@@ -13,7 +13,7 @@
 
     <?php if ($features['df_command']) : ?>
 
-        <?php if ($disks) : ?>
+        <?php if ($disks && !empty($disks)) : ?>
             <div class="semonto-health-monitor__test">
                 <div class="semonto-health-monitor__switch-container">
                     <label
