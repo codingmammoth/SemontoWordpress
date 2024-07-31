@@ -480,10 +480,15 @@ function semonto_get_default_disk_config ()
 
 function semonto_get_disk_space_config ()
 {
+    echo ('<pre>');
     $disk_space_config = semonto_get_available_disks();
     $available_disks = array_keys($disk_space_config);
-
     $configured_disks = get_option('semonto_config_disk_space', semonto_get_default_disk_config());
+
+    var_dump($disk_space_config);  
+    var_dump($available_disks);  
+    var_dump($configured_disks);  
+    echo ('</pre>');
 
     if ($configured_disks || !empty($configured_disks)) {
         foreach ($configured_disks as $disk_name => $disk_config) {
@@ -492,7 +497,6 @@ function semonto_get_disk_space_config ()
             }
         }
     }
-
 
     return $disk_space_config;
 }
