@@ -484,11 +484,15 @@ function semonto_get_disk_space_config ()
     $available_disks = array_keys($disk_space_config);
 
     $configured_disks = get_option('semonto_config_disk_space', semonto_get_default_disk_config());
-    foreach ($configured_disks as $disk_name => $disk_config) {
-        if (in_array($disk_name, $available_disks)) {
-            $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+
+    if ($configured_disks || !empty($configured_disks)) {
+        foreach ($configured_disks as $disk_name => $disk_config) {
+            if (in_array($disk_name, $available_disks)) {
+                $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+            }
         }
     }
+
 
     return $disk_space_config;
 }
@@ -499,9 +503,11 @@ function semonto_get_disk_space_inode_config ()
     $available_disks = array_keys($disk_space_config);
 
     $configured_disks = get_option('semonto_config_disk_space_inode', semonto_get_default_disk_config());
-    foreach ($configured_disks as $disk_name => $disk_config) {
-        if (in_array($disk_name, $available_disks)) {
-            $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+    if ($configured_disks || !empty($configured_disks)) {
+        foreach ($configured_disks as $disk_name => $disk_config) {
+            if (in_array($disk_name, $available_disks)) {
+                $disk_space_config[$disk_name] = array_merge($disk_space_config[$disk_name], $disk_config);
+            }
         }
     }
 
