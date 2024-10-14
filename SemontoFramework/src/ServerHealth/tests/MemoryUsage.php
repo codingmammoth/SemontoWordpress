@@ -37,8 +37,8 @@ class MemoryUsage extends ServerHealthTest
             $usage = $res[2];
             $usage = explode(" M", $usage);
             $usage = (float) trim($usage[0]);
-            $percent = $usage / $total;
-            $description = "$usage M " . number_format($percent * 100, 3) . " %";
+            $percent = ($usage / $total) * 100;
+            $description = "$usage M " . number_format($percent, 3) . " %";
 
             $warning_percentage_threshold = isset($this->config['warning_percentage_threshold']) ? $this->config['warning_percentage_threshold'] :90;
             $error_percentage_threshold = isset($this->config['error_percentage_threshold']) ? $this->config['error_percentage_threshold'] : 95;
