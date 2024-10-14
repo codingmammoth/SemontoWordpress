@@ -4,7 +4,7 @@ Tags: uptime, broken links, SSL, server health, Semonto
 Requires at least: 5.0
 Tested up to: 6.6
 Requires PHP: 7.4
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -134,3 +134,6 @@ at any time.
 #### Version 1.1.1 (Jul 31th, 2024)
 - Adds support for WordPress 6.6
 - Prevents crash when saving settings
+
+#### Version 1.1.2 (Oct 17th, 2024)
+- Corrects calculation of memory usage percentage
