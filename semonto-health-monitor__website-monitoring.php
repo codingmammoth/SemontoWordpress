@@ -29,6 +29,9 @@
                         <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/broken-link-monitoring">Broken links</a>
                     </li>
                     <li>
+                        <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/lighthouse-monitoring">Lighthouse Monitoring</a>
+                    </li>
+                    <li>
                         <a target="_blank" rel="noopener noreferrer" href="https://semonto.com/feature/https-certificate-monitoring">SSL</a>
                     </li>
                     <li>
