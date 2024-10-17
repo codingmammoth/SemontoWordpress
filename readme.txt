@@ -1,4 +1,4 @@
-=== Semonto - Uptime monitoring, Broken Links and SSL ===
+=== Semonto - Uptime monitoring, Broken Links, SSL and Lighthouse ===
 Contributors: CodingMammoth
 Tags: uptime, broken links, SSL, server health, Semonto
 Requires at least: 5.0
@@ -18,6 +18,7 @@ This way, you can fix the issue before anyone notices.
 
 With Semonto, you can be sure that:
 * Your website is up
+* Pages are loading fast enough
 * All links and buttons are working
 * The security certificate is valid (HTTPS)
 * Your server is healthy
@@ -35,13 +36,16 @@ performance of your website.
 - Uptime monitoring:
     - Know if your website is reachable.
 - Broken link monitoring
-    - Know if all buttons and links are working
+    - Know if all buttons and links are working.
+- Lighthouse Monitoring
+    - Instead of manually performing Lighthouse tests, automate your testing
+      and receive a notification if a website or page is not performing well.
 - HTTPS and SSL monitoring
-    - Make sure the connection is secure (the green padlock)
+    - Make sure the connection is secure (the green padlock).
 - Mixed content monitoring
     - Monitor if all the elements on your website are secure
 - Server Health monitoring
-    - Test whether your server is healthy (load, database, etc.)
+    - Test whether your server is healthy (load, database, etc.).
 - Content checks
     - Check whether your website is not returning a blank page or if 
       someone has not accidentally deleted something important from 
