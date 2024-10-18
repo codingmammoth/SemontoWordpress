@@ -26,6 +26,7 @@
                         <ul class="semonto-health-monitor__hero-content-list">
                             <li>Uptime</li>
                             <li>Broken links</li>
+                            <li>Lighthouse monitoring</li>
                             <li>SSL</li>
                             <li>Mixed content</li>
                             <li>Domain expiration</li>
