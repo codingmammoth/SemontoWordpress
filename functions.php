@@ -516,7 +516,7 @@ function semonto_sanitize_disk_config($setting, $new_settings)
 {
     $previous_settings = get_option($setting);
 
-    if (!$new_settings || !empty($new_settings)) {
+    if (!$new_settings || empty($new_settings)) {
         return $previous_settings;
     }
 
