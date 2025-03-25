@@ -453,7 +453,9 @@ function semonto_get_available_disks ()
     for ($i = 1; $i < count($lines); $i++) {
         if (trim($lines[$i]) != '') {
             $cols = preg_split('/\s+/', $lines[$i]);
-            if (preg_match('/^\/dev\//', $cols[0])) {
+            if (!isset($cols[0])) { continue; }
+
+            if (preg_match('/^\/dev\/(?!loop|ram|vd|fd|sr|shm)\w+/', $cols[0])) {
                 $disks[$cols[0]] = [
                     "warning_percentage_threshold" => 75,
                     "error_percentage_threshold" => 90,
