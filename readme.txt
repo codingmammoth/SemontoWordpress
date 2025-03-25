@@ -147,4 +147,4 @@ at any time.
 - Fixes issue when saving disk space test configuration
 
 #### Version 1.1.4 (Mar 25th, 2025)
-- Improved disk detection by filtering out loop devices (/dev/loop*).
+- Improved disk detection by filtering out non-physical disks.
