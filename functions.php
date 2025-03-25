@@ -455,17 +455,13 @@ function semonto_get_available_disks ()
             $cols = preg_split('/\s+/', $lines[$i]);
             if (!isset($cols[0])) { continue; }
 
-            $device = $cols[0];
-            if (preg_match('/^\/dev\/(loop|ram|vd|fd|sr)/', $device) ||  // Virtual disks
-                preg_match('/^(udev|tmpfs|overlay|aufs|snap|squashfs|fuse\.)/', $device)) { // Virtual filesystems
-                continue;
+            if (preg_match('/^\/dev\/(?!loop|ram|vd|fd|sr|shm)\w+/', $cols[0])) {
+                $disks[$cols[0]] = [
+                    "warning_percentage_threshold" => 75,
+                    "error_percentage_threshold" => 90,
+                    "enabled" => 0
+                ];
             }
-
-            $disks[$device] = [
-                "warning_percentage_threshold" => 75,
-                "error_percentage_threshold" => 90,
-                "enabled" => 0
-            ];
         }
     }
 
