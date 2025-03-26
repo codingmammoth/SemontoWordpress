@@ -4,7 +4,7 @@ Tags: uptime, broken links, SSL, server health, Semonto
 Requires at least: 5.0
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 1.1.4
+Stable tag: 1.1.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -148,3 +148,6 @@ at any time.
 
 #### Version 1.1.4 (Mar 25th, 2025)
 - Improved disk detection by filtering out non-physical disks.
+
+#### Version 1.1.5 (Mar 26th, 2025)
+- Adds alternative health endpoint to de docs.
