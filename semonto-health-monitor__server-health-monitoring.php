@@ -33,9 +33,15 @@
                         and login
                     </li>
                     <li>Add a new server</li>
-                    <li>Enter the following endpoint:<br><strong><?php echo esc_url(home_url('/health')); ?></strong>
+                    <li>
+                        Enter the following endpoint:<br><strong><?php echo esc_url(home_url('/health')); ?></strong>
+                        <br>
+                        <small>
+                            (If this URL gives a forbidden, and the secret text isn’t configured below,<br>
+                            please give <?php echo esc_url(home_url('?semonto_health_check=true')); ?> a go.)
+                        </small>
                     </li>
-                    <li>Select the Craft CMS format as the endpoint type, hit save.</li>
+                    <li>Select the WordPress format as the endpoint type, hit save.</li>
                 </ol>
 
                 <p>
