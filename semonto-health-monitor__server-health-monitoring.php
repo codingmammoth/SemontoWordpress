@@ -37,8 +37,8 @@
                         Enter the following endpoint:<br><strong><?php echo esc_url(home_url('/health')); ?></strong>
                         <br>
                         <small>
-                            (If this URL gives a forbidden, and the secret text isn’t configured below,<br>
-                            please give <?php echo esc_url(home_url('?semonto_health_check=true')); ?> a go.)
+                            (If this URL returns the status forbidden, and the secret key isn’t configured below,<br>
+                            please try <?php echo esc_url(home_url('?semonto_health_check=true')); ?>)
                         </small>
                     </li>
                     <li>Select the WordPress format as the endpoint type, hit save.</li>
