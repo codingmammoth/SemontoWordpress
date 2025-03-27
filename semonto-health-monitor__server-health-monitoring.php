@@ -52,7 +52,7 @@
                     <a 
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="https://semonto.com/how-to/how-to-monitor-server-health-with-semonto"
+                        href="https://semonto.com/how-to/how-to-monitor-a-wordpress-website-with-semonto"
                     >configure the settings</a>.
                 </p>
 
