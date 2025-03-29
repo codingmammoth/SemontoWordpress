@@ -33,9 +33,15 @@
                         and login
                     </li>
                     <li>Add a new server</li>
-                    <li>Enter the following endpoint:<br><strong><?php echo esc_url(home_url('/health')); ?></strong>
+                    <li>
+                        Enter the following endpoint:<br><strong><?php echo esc_url(home_url('/health')); ?></strong>
+                        <br>
+                        <small>
+                            (If this URL returns the status forbidden, and the secret key isn’t configured below,<br>
+                            please try <?php echo esc_url(home_url('?semonto_health_check=true')); ?>)
+                        </small>
                     </li>
-                    <li>Select the Craft CMS format as the endpoint type, hit save.</li>
+                    <li>Select the WordPress format as the endpoint type, hit save.</li>
                 </ol>
 
                 <p>
@@ -46,7 +52,7 @@
                     <a 
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="https://semonto.com/how-to/how-to-monitor-server-health-with-semonto"
+                        href="https://semonto.com/how-to/how-to-monitor-a-wordpress-website-with-semonto"
                     >configure the settings</a>.
                 </p>
 
