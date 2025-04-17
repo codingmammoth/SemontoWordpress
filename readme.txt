@@ -149,5 +149,5 @@ at any time.
 #### Version 1.1.4 (Mar 25th, 2025)
 - Improved disk detection by filtering out non-physical disks.
 
-#### Version 1.1.5 (Mar 26th, 2025)
-- Adds alternative health endpoint to de docs.
+#### Version 1.1.5 (Apr 17th, 2025)
+- Adds support for WordPress 6.8.
