@@ -2,7 +2,7 @@
 
 /*
 Plugin Name: Semonto Health Monitor
-Version: 1.1.5
+Version: 1.1.6
 Description: Semonto health plugin for WordPress 
 Author: Coding Mammoth - Semonto
 License: GPLv2 or later
@@ -79,6 +79,8 @@ function semonto_health_monitor_settings_page() {
         </script>
     <?php
 }
+
+register_activation_hook(__FILE__, 'semonto_health_monitor_activate');
 
 semonto_run_health_endpoint();
 add_action('admin_menu', function () {

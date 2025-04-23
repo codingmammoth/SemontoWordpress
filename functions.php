@@ -286,6 +286,10 @@ function semonto_generate_tests_config() {
 
 function semonto_health_monitor_rewrite_rules() {
     add_rewrite_rule("^health$", "index.php?semonto_health_check=true", "top");
+}
+
+function semonto_health_monitor_activate() {
+    semonto_health_monitor_rewrite_rules();
     flush_rewrite_rules();
 }
 
@@ -333,15 +337,6 @@ function semonto_add_plugin_page_settings_link( $links ) {
 		admin_url( 'options-general.php?page=semonto_health_monitor_settings' ) .
 		'">' . __('Settings') . '</a>';
 	return $links;
-}
-
-// Not used anymore.
-function semonto_df_error_notice() {
-    ?>
-    <div class="error">
-        <p><?php echo "Error executing 'df' command. Please check server configuration."; ?></p>
-    </div>
-    <?php
 }
 
 function semonto_show_account_notice () {
