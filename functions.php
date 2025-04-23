@@ -286,6 +286,10 @@ function semonto_generate_tests_config() {
 
 function semonto_health_monitor_rewrite_rules() {
     add_rewrite_rule("^health$", "index.php?semonto_health_check=true", "top");
+}
+
+function semonto_health_monitor_activate() {
+    semonto_health_monitor_rewrite_rules();
     flush_rewrite_rules();
 }
 
