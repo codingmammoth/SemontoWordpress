@@ -339,15 +339,6 @@ function semonto_add_plugin_page_settings_link( $links ) {
 	return $links;
 }
 
-// Not used anymore.
-function semonto_df_error_notice() {
-    ?>
-    <div class="error">
-        <p><?php echo "Error executing 'df' command. Please check server configuration."; ?></p>
-    </div>
-    <?php
-}
-
 function semonto_show_account_notice () {
     $admin_page = get_current_screen();
     if ($admin_page->base == SEMONTO_HEALTH_MONITOR_SETTINGS_PAGE) {
