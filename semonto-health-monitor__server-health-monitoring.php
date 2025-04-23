@@ -35,7 +35,7 @@
                     <li>Add a new server</li>
                     <li>Enter the following endpoint:<br><strong><?php echo esc_url(home_url('/health')); ?></strong>
                     </li>
-                    <li>Select the Craft CMS format as the endpoint type, hit save.</li>
+                    <li>Select the WordPress format as the endpoint type, hit save.</li>
                 </ol>
 
                 <p>
@@ -46,7 +46,7 @@
                     <a 
                         target="_blank"
                         rel="noopener noreferrer"
-                        href="https://semonto.com/how-to/how-to-monitor-server-health-with-semonto"
+                        href="https://semonto.com/how-to/how-to-monitor-a-wordpress-website-with-semonto"
                     >configure the settings</a>.
                 </p>
 
