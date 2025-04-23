@@ -80,6 +80,8 @@ function semonto_health_monitor_settings_page() {
     <?php
 }
 
+register_activation_hook(__FILE__, 'semonto_health_monitor_activate');
+
 semonto_run_health_endpoint();
 add_action('admin_menu', function () {
     add_options_page(
