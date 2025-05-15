@@ -4,7 +4,7 @@ Tags: uptime, broken links, SSL, server health, Semonto
 Requires at least: 5.0
 Tested up to: 6.8
 Requires PHP: 7.4
-Stable tag: 1.1.5
+Stable tag: 1.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -151,3 +151,7 @@ at any time.
 
 #### Version 1.1.5 (Apr 17th, 2025)
 - Adds support for WordPress 6.8.
+
+#### Version 1.1.6 (May 15th, 2025)
+- Prevents performance issues by removing unnecessary calls to `flush_rewrite_rules()`.
+- Rewrite rules are now flushed only on plugin activation.
